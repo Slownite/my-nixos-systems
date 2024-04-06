@@ -60,7 +60,7 @@ def link_nix_files(nix_files, source_dir):
     """
     nixos_dir = "/etc/nixos/"
     for file in nix_files:
-        source_path = os.path.join(source_dir, file)
+        source_path = os.abspath(os.path.join(source_dir, file))
         link_path = os.path.join(nixos_dir, file)
         create_symlink(source_path, link_path)
 
