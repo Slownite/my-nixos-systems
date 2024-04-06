@@ -1,0 +1,9 @@
+#+title: my-nix-config
+This repo contains every config files for all my setup for nixos
+* Installation
+To install a new instance of nix os do:
+#+begin_src bash
+cd my-nix-config/
+sudo chmod +x setup.py
+sudo ./setup.py .
+#+end_src
