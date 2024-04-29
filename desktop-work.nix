@@ -108,6 +108,7 @@
     zsh-autosuggestions
     pipx
     syncthing
+    obs-studio
   ];
   #programs configuration
 
