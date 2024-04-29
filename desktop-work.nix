@@ -22,10 +22,13 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
+  # Enable the KDE Desktop Environment.
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.desktopManager.plasma5.enable = true;
+  environment.plasma5.excludePackages = with pkgs.libsForQt5; [
+  plasma-browser-integration
+  oxygen
+];
   # Configure keymap in X11
   services.xserver = {
     layout = "fr";
@@ -67,7 +70,19 @@
       "networkmanager"
       "wheel"
     ];
-    packages = with pkgs; [ flatpak ];
+    packages = with pkgs; [ 
+    flatpak
+    black
+    pipenv
+    isort
+    python311Packages.nose3
+    python311Packages.pytest
+    python311Packages.setuptools
+    python311Packages.pip
+    nixfmt
+    zig
+
+    ];
   };
 
   services.flatpak.enable = true;
