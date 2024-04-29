@@ -58,15 +58,12 @@
     docker-compose
     poetry
     python3
+    ffmpeg_5
   ];
   #programs configuration
   virtualisation.docker.enable = true;
-  programs.zsh = {
-    enable = true;
-  };
-  programs.git = {
-    enable = true;
-  };
+  programs.zsh = { enable = true; };
+  programs.git = { enable = true; };
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
