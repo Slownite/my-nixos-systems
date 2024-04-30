@@ -69,17 +69,17 @@
   };
 
   users.motd = ''
-	   /\     /\
-	{  `---'  }
-	{  O   O  }
-	~>  V  <~~
-	 \  \|/  /
-	  `-----'____
-	  /     \    \_
-	 {       }\  )_\_   _
-	 |  \_/  |/ /  \_\_/ )
-	  \__/  /(_/     \__/
-	    (__/
+       /\     /\
+    {  `---'  }
+    {  O   O  }
+    ~>  V  <~~
+     \  \|/  /
+      `-----'____
+      /     \    \_
+     {       }\  )_\_   _
+     |  \_/  |/ /  \_\_/ )
+      \__/  /(_/     \__/
+        (__/
 
   '';
   # List packages installed in system profile. To search, run:
@@ -105,6 +105,8 @@
       PasswordAuthentication = true;
       AllowUsers = [ "sam" ];
       UseDns = true;
+      settings.PasswordAuthentication = false;
+      settings.KbdInteractiveAuthentication = false;
       X11Forwarding = false;
       PermitRootLogin = "prohibit-password";
     };
