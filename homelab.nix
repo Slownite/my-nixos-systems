@@ -102,11 +102,10 @@
     enable = true;
     ports = [ 22 ];
     settings = {
-      PasswordAuthentication = true;
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
       AllowUsers = [ "sam" ];
       UseDns = true;
-      settings.PasswordAuthentication = false;
-      settings.KbdInteractiveAuthentication = false;
       X11Forwarding = false;
       PermitRootLogin = "prohibit-password";
     };
