@@ -16,7 +16,7 @@
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-  networking.hostname = "mark";
+  networking.hostName = "mark";
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
@@ -148,4 +148,5 @@
   # Or disable the firewall altogether.
   networking.firewall.enable = true;
   services.logind.lidSwitch = "ignore";
+  services.logind.lidSwitchDocked = "ignore";
 }
