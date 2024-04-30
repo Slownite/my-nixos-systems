@@ -83,15 +83,22 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    ports = [ 22 ];
+    settings = {
+      PasswordAuthentication = true;
+      AllowUsers = [ "sam" ];
+      UseDns = true;
+      X11Forwarding = false;
+      PermitRootLogin = "prohibit-password";
+    };
+  };
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 22 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-  services.logind.extraConfig = ''
-    HandleLidSwitch=ignore
-    HandleLidSwitchDocked=ignore
-  '';
+  networking.firewall.enable = true;
+  services.logind.lidSwitch = "ignore";
 }
