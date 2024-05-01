@@ -48,7 +48,8 @@
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
     22
-    9443
+    9443 #portainer
+    8096 #jellyfin
   ];
   # networking.firewall.allowedUDPPorts = [ ... ];
 }
