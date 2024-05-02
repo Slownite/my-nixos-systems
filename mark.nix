@@ -49,7 +49,7 @@
     enable = true; # Enable dnsmasq service
     server = [
       "127.0.0.1"
-      "192.168.1.2"
+      "192.168.8.190"
     ] # Specify IP addresses for dnsmasq to listen on
     ;
   };
