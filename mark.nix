@@ -45,13 +45,18 @@
         (__/
 
   '';
+  services.dnsmasq = {
+    enable = true; # Enable dnsmasq service
+    extraConfig = ''
+      listen-address=127.0.0.1,192.168.1.2 # Specify IP addresses for dnsmasq to listen on
+    '';
+  };
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
     22
     9443 # portainer
     8096 # jellyfin
     53 # pi-hole
-    5000 # pi-hole
   ];
   networking.firewall.allowedUDPPorts = [
     53 # pi-hole
