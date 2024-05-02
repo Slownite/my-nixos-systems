@@ -48,8 +48,13 @@
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
     22
-    9443 #portainer
-    8096 #jellyfin
+    9443 # portainer
+    8096 # jellyfin
+    53 # pi-hole
+    8000 # pi-hole
   ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedUDPPorts = [
+    53 # pi-hole
+    67 # Only required if you are using Pi-hole as your DHCP server
+  ];
 }
