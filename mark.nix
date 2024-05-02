@@ -51,7 +51,7 @@
     9443 # portainer
     8096 # jellyfin
     53 # pi-hole
-    8000 # pi-hole
+    5000 # pi-hole
   ];
   networking.firewall.allowedUDPPorts = [
     53 # pi-hole
