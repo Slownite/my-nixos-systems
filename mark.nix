@@ -45,11 +45,13 @@
         (__/
 
   '';
-  services.dnsmasq = {
+  services.dnsmasq.settings = {
     enable = true; # Enable dnsmasq service
-    extraConfig = ''
-      listen-address=127.0.0.1,192.168.1.2 # Specify IP addresses for dnsmasq to listen on
-    '';
+    server = [
+      "127.0.0.1"
+      "192.168.1.2"
+    ] # Specify IP addresses for dnsmasq to listen on
+    ;
   };
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
