@@ -17,7 +17,7 @@
   };
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [ ];
+  environment.systemPackages = with pkgs; [ nfs-utils ];
   #programs configuration
 
   # Some programs need SUID wrappers, can be configured further or are
