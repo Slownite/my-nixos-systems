@@ -43,13 +43,14 @@
       PermitRootLogin = "prohibit-password";
     };
   };
-
+  # Enable the NFS client
+  services.nfs.client.enable = true;
   # Or disable the firewall altogether.
   networking.firewall.enable = true;
   services.logind.lidSwitch = "ignore";
   services.logind.lidSwitchDocked = "ignore";
-  # fileSystems."/media/volumes" = {
-  #   device = "192.168.8.1:/mnt/bdrive";
-  #   fsType = "nfs";
-  # };
+  fileSystems."/media/volumes" = {
+    device = "192.168.8.1:/mnt/bdrive";
+    fsType = "nfs";
+  };
 }
