@@ -43,8 +43,6 @@
       PermitRootLogin = "prohibit-password";
     };
   };
-  # Enable the NFS client
-  services.nfs.client.enable = true;
   # Or disable the firewall altogether.
   networking.firewall.enable = true;
   services.logind.lidSwitch = "ignore";
