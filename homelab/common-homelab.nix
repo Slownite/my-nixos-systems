@@ -35,7 +35,7 @@
     enable = true;
     ports = [ 22 ];
     settings = {
-      PasswordAuthentication = false;
+      PasswordAuthentication = true;
       KbdInteractiveAuthentication = false;
       AllowUsers = [ "sam" ];
       UseDns = true;
