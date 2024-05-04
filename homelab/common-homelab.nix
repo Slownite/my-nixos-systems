@@ -19,7 +19,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     nfs-utils
-    libnfs
+    btrfs-progs
   ];
   #programs configuration
 
@@ -38,7 +38,7 @@
     enable = true;
     ports = [ 22 ];
     settings = {
-      PasswordAuthentication = true;
+      PasswordAuthentication = false;
       KbdInteractiveAuthentication = false;
       AllowUsers = [ "sam" ];
       UseDns = true;
@@ -50,8 +50,8 @@
   networking.firewall.enable = true;
   services.logind.lidSwitch = "ignore";
   services.logind.lidSwitchDocked = "ignore";
-  fileSystems."/media/volumes" = {
-    device = "192.168.8.1:/mnt/bdrive";
-    fsType = "nfs";
-  };
+  # fileSystems."/volumes" = {
+  #   device = "192.168.8.190:/mnt/bdrive";
+  #   fsType = "nfs";
+  # };
 }

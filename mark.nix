@@ -53,6 +53,17 @@
     ] # Specify IP addresses for dnsmasq to listen on
     ;
   };
+
+  # fileSystems."/mnt/data" = {
+  #   device = "/dev/disk/by-uuid/09d5ea97-bc03-43bb-a07c-258aa0b170ff"; # Use the UUID or device path
+  #   fsType = "btrfs"; # Use the appropriate filesystem type
+  # };
+  # services.nfs.server = {
+  #   enable = true;
+  #   exports = ''
+  #     /mnt/bdrive *(rw,sync,no_subtree_check,no_root_squash)
+  #   '';
+  # };
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
     22
