@@ -50,8 +50,8 @@
   networking.firewall.enable = true;
   services.logind.lidSwitch = "ignore";
   services.logind.lidSwitchDocked = "ignore";
-  # fileSystems."/volumes" = {
-  #   device = "192.168.8.190:/mnt/bdrive";
-  #   fsType = "nfs";
-  # };
+  fileSystems."/nfs" = {
+    device = "192.168.8.190:/mnt/bdrive/data/";
+    fsType = "nfs";
+  };
 }
