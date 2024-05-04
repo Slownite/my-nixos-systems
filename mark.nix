@@ -54,10 +54,10 @@
     ;
   };
 
-  # fileSystems."/mnt/data" = {
-  #   device = "/dev/disk/by-uuid/09d5ea97-bc03-43bb-a07c-258aa0b170ff"; # Use the UUID or device path
-  #   fsType = "btrfs"; # Use the appropriate filesystem type
-  # };
+  fileSystems."/mnt/bdrive" = {
+    device = "/dev/disk/by-uuid/09d5ea97-bc03-43bb-a07c-258aa0b170ff"; # Use the UUID or device path
+    fsType = "btrfs"; # Use the appropriate filesystem type
+  };
   # services.nfs.server = {
   #   enable = true;
   #   exports = ''
