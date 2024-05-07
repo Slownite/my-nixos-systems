@@ -69,10 +69,11 @@
     22
     9443 # portainer
     8096 # jellyfin
-    53 # pi-hole
+    443 # nextcloud
+    53 # pihole
+    8070 # pihole
   ];
   networking.firewall.allowedUDPPorts = [
-    53 # pi-hole
-    67 # Only required if you are using Pi-hole as your DHCP server
+    53 # pihole
   ];
 }
