@@ -45,19 +45,19 @@
         (__/
 
   '';
-  services.dnsmasq.settings = {
-    enable = true; # Enable dnsmasq service
-    server = [
-      "127.0.0.1"
-      "192.168.8.190"
-    ] # Specify IP addresses for dnsmasq to listen on
-    ;
-  };
+  # services.dnsmasq.settings = {
+  #   enable = true; # Enable dnsmasq service
+  #   server = [
+  #     "127.0.0.1"
+  #     "192.168.8.190"
+  #   ] # Specify IP addresses for dnsmasq to listen on
+  #   ;
+  # };
 
-  fileSystems."/mnt/bdrive" = {
-    device = "/dev/disk/by-uuid/09d5ea97-bc03-43bb-a07c-258aa0b170ff"; # Use the UUID or device path
-    fsType = "btrfs"; # Use the appropriate filesystem type
-  };
+  # fileSystems."/mnt/bdrive" = {
+  #   device = "/dev/disk/by-uuid/09d5ea97-bc03-43bb-a07c-258aa0b170ff"; # Use the UUID or device path
+  #   fsType = "btrfs"; # Use the appropriate filesystem type
+  # };
   # services.nfs.server = {
   #   enable = true;
   #   exports = ''
@@ -70,10 +70,7 @@
     9443 # portainer
     8096 # jellyfin
     443 # nextcloud
-    53 # pihole
-    8070 # pihole
   ];
   networking.firewall.allowedUDPPorts = [
-    53 # pihole
   ];
 }
