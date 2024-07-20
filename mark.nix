@@ -66,7 +66,7 @@
   # };
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
-    22
+    22 #ssh
     9443 # portainer
     8096 # jellyfin
     443 # nextcloud
