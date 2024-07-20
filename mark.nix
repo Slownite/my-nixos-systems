@@ -11,6 +11,11 @@
     ./common.nix
     ./homelab/common-homelab.nix
   ];
+boot.loader.efi.efiSysMountPoint = "/boot";
+# fileSystems."/boot" = {
+#   device = "/dev/sda1";
+#   fsType = "vfat";
+# };
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
