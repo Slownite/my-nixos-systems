@@ -1,0 +1,3 @@
+[submodule "nix_modules/home-manager/.oh-my-zsh"]
+	path = nix_modules/home-manager/.oh-my-zsh
+	url = https://github.com/ohmyzsh/ohmyzsh.git
