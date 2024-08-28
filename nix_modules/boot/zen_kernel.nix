@@ -2,6 +2,7 @@
 
 {
   boot = {
+    kernel.enable = true;
     kernelPackages = pkgs.linuxPackages_zen;
   };
 

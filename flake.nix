@@ -6,66 +6,73 @@
     stylix.url = "github:danth/stylix";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs = { self, nixpkgs, stylix, ... }:
     let
-      systems = [
-        "x86_64-linux"
-      ];
-      forEachSystem = f: nixpkgs.lib.genAttrs systems (system: f system);
+      system =  "x86_64-linux";
+      pkgs = import nixpkgs {
+       inherit system;
+       config = {
+        allowUnfree = true;
+      };
+     };
     in
       {
-        nixosConfigurations = forEachSystem (system : {
+        nixosConfigurations = {
           homeStation = nixpkgs.lib.nixosSystem {
-            inherit system;
+            specialArgs = {inherit system;};
             modules = [
+              stylix.nixosModules.stylix
               ./hosts/home_station/configuration.nix
-              inputs.stylix.nixosModules.stylix
+	   # Set a specific kernel version
+            {
+            #boot.kernelPackages = pkgs.linuxPackages_6_6; # or another version like pkgs.linuxPackages_6_1
+
+            # Use the proprietary NVIDIA drivers
+            services.xserver.videoDrivers = [ "nvidia" ];
+            hardware.nvidia.modesetting.enable = true;
+
+            # Ensure necessary firmware is included
+            hardware.firmware = [
+              pkgs.firmwareLinuxNonfree
             ];
-            specialArgs = {};
-            config = {
-              allowUnfree = true;
-             };
+
+            # Optional: Add kernel parameters to help with ACPI issues
+            boot.kernelParams = [ "acpi=strict" ]; # or "acpi=off" if really needed
+
+            # Additional modules for your network, USB, etc.
+            boot.extraModulePackages = [
+              pkgs.linuxPackages.nvidia_x11
+              pkgs.linuxPackages.acpi_call
+            ];
+
+            # Adjust USB power settings if necessary
+          }
+            ];
+          };
           };
           homelab = nixpkgs.lib.nixosSystem {
-            inherit system;
+            specialArgs = {inherit system;};
             modules = [
               ./hosts/homelab/configuration.nix
             ];
-            specialArgs = {};
-            config = {
-              allowUnfree = true;
-             };
           };
           homeLaptop = nixpkgs.lib.nixosSystem {
-            inherit system;
+            specialArgs = {inherit system;};
             modules = [
               ./hosts/home_laptop/configuration.nix
             ];
-            specialArgs = {};
-            config = {
-              allowUnfree = true;
-             };
           };
           workLaptop = nixpkgs.lib.nixosSystem {
-            inherit system;
+            specialArgs = {inherit system;};
             modules = [
               ./hosts/work_laptop/configuration.nix
             ];
-            specialArgs = {};
-            config = {
-              allowUnfree = true;
-             };
           };
           workStation = nixpkgs.lib.nixosSystem {
-            inherit system;
+            specialArgs = {inherit system;};
             modules = [
               ./hosts/work_station/configuration.nix
             ];
-            specialArgs = {};
-            config = {
-              allowUnfree = true;
-             };
           };
-        });
-      };
-}
+        };
+      }
