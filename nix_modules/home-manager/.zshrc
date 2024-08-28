@@ -103,7 +103,7 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   export EDITOR='nvim'
 fi
-export PATH="$PATH:$HOME/.local/bin:$HOME/.config/emacs/bin"
+export PATH="$PATH:$HOME/.local/bin:$HOME/.emacs/bin"
 export PATH="$PATH:$HOME/Documents/software/bin"
 
 # Compilation flags

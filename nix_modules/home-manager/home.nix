@@ -34,16 +34,13 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-    steam
     pika-backup
     keepassxc
     onlyoffice-bin
     localsend
-    firefox
     obs-studio
-    kitty
-    neovim
-    emacs
+    vlc
+    fzf
   ];
   imports = [
     ../programs/default.nix

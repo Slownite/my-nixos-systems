@@ -8,6 +8,9 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ../../nix_modules/boot/zen_kernel
+      ../../default.nix
+
     ];
 
   # Use the GRUB 2 boot loader.
@@ -40,7 +43,14 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  services.xserver.windowManager.qtile.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.windowManager.qtile = {
+    enable = true;
+    extraPackages = python3Packages: with python3Packages; [
+      qtile-extras
+    ];
+  };
 
   
 
@@ -72,6 +82,32 @@
       qtile
       gnome.nautilus
     ];
+    environment.gnome.excludePackages = (with pkgs; [
+      gnome-photos
+      gnome-tour
+    ]) ++ (with pkgs.gnome; [
+      cheese # webcam tool
+      gnome-music
+      gnome-terminal
+      gedit # text editor
+      epiphany # web browser
+      geary # email reader
+      evince # document viewer
+      gnome-characters
+      totem # video player
+      tali # poker game
+      iagno # go game
+      hitori # sudoku game
+      atomix # puzzle game
+    ]);
+
+
+    shell_cmd.enable = true;
+    experimental.enable = true;
+    build_essentials.enable = true;
+    docker.enable = true;
+    gaming.enable = true;
+    theme.enable = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
 

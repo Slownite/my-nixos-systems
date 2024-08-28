@@ -11,9 +11,6 @@
       bat
       wget
       curl
-      git
-      zsh
-      fzf
       tmux
     ];
     programs.zsh = {

@@ -4,6 +4,6 @@
   programs.doom-emacs = {
     enable = true;
     emacsPackage = pkgs.emacs;
-    doomPrivateDir = "./.doom.d";
+    doomPrivateDir = "$HOME/.doom.d";
   };
 }

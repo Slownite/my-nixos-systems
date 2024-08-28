@@ -34,13 +34,13 @@
             Fingerprinting = true;
           };
           DisablePocket = true;
-          DisableFirefoxAccounts = true;
+          DisableFirefoxAccounts = false;
           DisableAccounts = true;
           DisableFirefoxScreenshots = true;
           OverrideFirstRunPage = "";
           OverridePostUpdatePage = "";
           DontCheckDefaultBrowser = true;
-          DisplayBookmarksToolbar = "never"; # alternatives: "always" or "newtab"
+          DisplayBookmarksToolbar = "newtab"; # alternatives: "always" or "newtab"
           DisplayMenuBar = "default-off"; # alternatives: "always", "never" or "default-on"
           SearchBar = "unified"; # alternative: "separate"
 
