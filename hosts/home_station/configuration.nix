@@ -8,8 +8,13 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./../../system/hardware/nvidia.nix
+      ../../user/app/gaming.nix
+      ../../system/bin/build_essentials.nix
+      ../../system/theme/theme.nix
+      ../../system/wm/hyprland.nix
     ];
-
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -47,12 +52,6 @@
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
-  #services.xserver.windowManager.qtile = {
-  #  enable = true;
-  #  extraPackages = python3Packages: with python3Packages; [
-  #    qtile-extras
-  #  ];
-  #};
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -88,42 +87,19 @@
     description = "sam";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      qtile
-      gnome.nautilus
-      home-manager
-firefox
-    #  thunderbird
     ];
   };
 
-    environment.gnome.excludePackages = (with pkgs; [
-      gnome-photos
-      gnome-tour
-      gedit # text editor
-    ]) ++ (with pkgs.gnome; [
-      cheese # webcam tool
-      gnome-music
-      gnome-terminal
-      epiphany # web browser
-      geary # email reader
-      evince # document viewer
-      gnome-characters
-      totem # video player
-      tali # poker game
-      iagno # go game
-      hitori # sudoku game
-      atomix # puzzle game
-    ]);
-
+  nixpkgs.config.allowUnfree = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   wget
-git
+  base16-schemes
   ];
 
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+users.users.sam.shell = pkgs.nushell;
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
