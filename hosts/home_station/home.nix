@@ -7,7 +7,6 @@
 	../../user/app/nvim.nix
 	../../user/wm/hypr.nix
 
-
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -48,7 +47,6 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
     alacritty
-    
     firefox
     keepassxc
     pika-backup
@@ -60,6 +58,7 @@
     cargo
     nil
   ];
+
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.

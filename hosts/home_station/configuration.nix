@@ -13,6 +13,7 @@
       ../../system/bin/build_essentials.nix
       ../../system/theme/theme.nix
       ../../system/wm/hyprland.nix
+      ../../user/app/git.nix
     ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # Bootloader.

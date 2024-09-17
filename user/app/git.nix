@@ -2,7 +2,6 @@
 {
   programs.git  = {
     enable = true;
-    userEmail = "snfdiop@outlook.com";
-    userName = "sam";
+    lfs.enable = true;
   };
 }

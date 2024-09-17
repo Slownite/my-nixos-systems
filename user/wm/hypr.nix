@@ -4,13 +4,15 @@
 {
   wayland.windowManager.hyprland = {
     enable = true;
+  # Optional, hint Electron apps to use Wayland:
     systemd.variables = ["--all"];
     settings = {
       monitor=",preferred,auto,auto";
       
       "$terminal" = "alacritty";
       "$fileManager" = "nautilus";
-      "$menu" = "wofi --show drun";
+      "$menu" = "rofi --show drun";
+      "$browser" = "firefox";
       env = [
          "XCURSOR_SIZE,24"   
          "HYPRCURSOR_SIZE,24"
@@ -23,11 +25,7 @@
         "col.inactive_border" = "rgba(595959aa)";
         resize_on_border = false;
         allow_tearing = false;
-        layout = {
-          
-        pseudotile = true; # Master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
-        preserve_split = true; # You probably want this
-        };
+        layout = "dwindle";
       };
       decoration = {
         rounding = 10;
@@ -48,6 +46,7 @@
             passes = 1;
             vibrancy = 0.1696;
         };
+      };
         animations =  {
             enabled = true;
 
@@ -62,7 +61,15 @@
             "borderangle, 1, 8, default"
             "fade, 1, 7, default"
             "workspaces, 1, 6, default"
-            ];
+              ];
+            };
+          dwindle = {
+            pseudotile = true; # Master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
+            preserve_split = true; # You probably want this
+          };
+          master = {
+            new_status = "master";
+          };
             misc = { 
                 force_default_wallpaper = -1; # Set to 0 or 1 to disable the anime mascot wallpapers
                 disable_hyprland_logo = false; # If true disables the random hyprland logo / anime girl background. :(
@@ -112,6 +119,7 @@
                     "$mainMod, Space, exec, $menu"
                     "$mainMod, P, pseudo, # dwindle"
                     "$mainMod, S, togglesplit, # dwindle"
+                    "$mainMod, B, exec, $browser"
 
             # Move focus with mainMod + arrow keys
                     "$mainMod, H, movefocus, l"
@@ -173,13 +181,9 @@
 
             windowrulev2 = "suppressevent maximize, class:.*"; # You'll probably like this.
         };
-      };
     };
-  };
-  # Optional, hint Electron apps to use Wayland:
-  home.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-    WLR_NO_HARDWARE_CURSORS = "1";
-  };
-
+    home.sessionVariables = {
+      NIXOS_OZONE_WL = "1";
+      WLR_NO_HARDWARE_CURSORS = "1";
+    };
 }
