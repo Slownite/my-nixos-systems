@@ -7,11 +7,11 @@
   # Optional, hint Electron apps to use Wayland:
     systemd.variables = ["--all"];
     settings = {
-      monitor=",preferred,auto,auto";
+      monitor="HDMI-A-1,preferred,auto,1";
       
       "$terminal" = "alacritty";
       "$fileManager" = "nautilus";
-      "$menu" = "rofi --show drun";
+      "$menu" = "rofi --show run";
       "$browser" = "firefox";
       env = [
          "XCURSOR_SIZE,24"   
@@ -140,16 +140,16 @@
                     "$mainMod, 0, workspace, 10"
 
             # Move active window to a workspace with mainMod + SHIFT + [0-9]
-                    "$mainMod SHIFT, 1, movetoworkspace, 1"
-                    "$mainMod SHIFT, 2, movetoworkspace, 2"
-                    "$mainMod SHIFT, 3, movetoworkspace, 3"
-                    "$mainMod SHIFT, 4, movetoworkspace, 4"
-                    "$mainMod SHIFT, 5, movetoworkspace, 5"
-                    "$mainMod SHIFT, 6, movetoworkspace, 6"
-                    "$mainMod SHIFT, 7, movetoworkspace, 7"
-                    "$mainMod SHIFT, 8, movetoworkspace, 8"
-                    "$mainMod SHIFT, 9, movetoworkspace, 9"
-                    "$mainMod SHIFT, 0, movetoworkspace, 10"
+                    "$mainMod SHIFT, !, movetoworkspace, 1"
+                    "$mainMod SHIFT, @, movetoworkspace, 2"
+                    "$mainMod SHIFT, Escape, movetoworkspace, 3"
+                    "$mainMod SHIFT, $, movetoworkspace, 4"
+                    "$mainMod SHIFT, %, movetoworkspace, 5"
+                    "$mainMod SHIFT, ^, movetoworkspace, 6"
+                    "$mainMod SHIFT, &, movetoworkspace, 7"
+                    "$mainMod SHIFT, *, movetoworkspace, 8"
+                    "$mainMod SHIFT, (, movetoworkspace, 9"
+                    "$mainMod SHIFT, ), movetoworkspace, 10"
 
             # Example special workspace (scratchpad)
                     "$mainMod, A, togglespecialworkspace, magic"
