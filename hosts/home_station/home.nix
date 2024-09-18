@@ -6,6 +6,7 @@
 	../../user/app/emacs.nix
 	../../user/app/nvim.nix
 	../../user/theme/theme.nix
+	../../user/wm/hypr.nix
 
   ];
   # Home Manager needs a bit of information about you and the paths it should
@@ -58,6 +59,7 @@
     cargo
     nil
     xclip
+    dolphin
   ];
 
 

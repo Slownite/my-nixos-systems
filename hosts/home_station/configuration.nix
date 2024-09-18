@@ -11,8 +11,9 @@
       ./../../system/hardware/nvidia.nix
       ../../user/app/gaming.nix
       ../../system/bin/build_essentials.nix
-      ../../system/wm/kde.nix
       ../../user/app/git.nix
+      ../../system/wm/kde.nix
+      ../../system/wm/hyprland.nix
     ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # Bootloader.
