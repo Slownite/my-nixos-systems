@@ -43,6 +43,7 @@
        v = "nvim";
        t = "tmux";
        ta = "tmux a";
+       copy = "xclip -selection clipboard";
        };
   };
   programs.zoxide = {

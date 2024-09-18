@@ -5,9 +5,8 @@
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     polarity = "dark";
-    autoEnable = true;
-    targets.gnome.enable = false;
     image = ./corgi.jpg;
+    autoEnable = true;
     fonts = {
         sansSerif = {
           package = pkgs.nerdfonts;

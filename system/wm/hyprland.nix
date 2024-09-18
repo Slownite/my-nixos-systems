@@ -13,10 +13,10 @@
 
   environment.defaultPackages = with pkgs; [
     wl-clipboard
-    mako
+    dunst
     waybar
     rofi-wayland
     libnotify
-    swww
+    feh
   ];
 }

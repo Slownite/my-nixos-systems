@@ -11,8 +11,7 @@
       ./../../system/hardware/nvidia.nix
       ../../user/app/gaming.nix
       ../../system/bin/build_essentials.nix
-      ../../system/theme/theme.nix
-      ../../system/wm/hyprland.nix
+      ../../system/wm/kde.nix
       ../../user/app/git.nix
     ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -50,9 +49,6 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {

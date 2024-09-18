@@ -5,7 +5,7 @@
   	../../user/shell/sh.nix
 	../../user/app/emacs.nix
 	../../user/app/nvim.nix
-	../../user/wm/hypr.nix
+	../../user/theme/theme.nix
 
   ];
   # Home Manager needs a bit of information about you and the paths it should
@@ -57,6 +57,7 @@
     python3
     cargo
     nil
+    xclip
   ];
 
 
