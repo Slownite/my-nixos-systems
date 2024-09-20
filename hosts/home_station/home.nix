@@ -59,6 +59,7 @@
     htop
     nvtopPackages.full
     nerdfonts
+    nix-index
   ];
   gtk.enable = true;
   qt.enable = true;
