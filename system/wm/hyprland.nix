@@ -3,20 +3,9 @@
 {
 
   programs.hyprland.enable = true;
+  programs.hyprland.xwayland.enable = true;
   hardware = {
     opengl.enable = true;
     nvidia.modesetting.enable = true;
  };
-  xdg.portal.enable = true;
-
-  xdg.portal.config.common.default = "*";
-
-  environment.defaultPackages = with pkgs; [
-    wl-clipboard
-    dunst
-    waybar
-    rofi-wayland
-    libnotify
-    feh
-  ];
 }

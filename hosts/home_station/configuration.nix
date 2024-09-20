@@ -12,8 +12,8 @@
       ../../user/app/gaming.nix
       ../../system/bin/build_essentials.nix
       ../../user/app/git.nix
-      ../../system/wm/kde.nix
-      ../../system/wm/hyprland.nix
+      ../../system/wm/gnome.nix
+      ../../system/wm/i3.nix
     ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # Bootloader.
@@ -94,6 +94,9 @@
   environment.systemPackages = with pkgs; [
   wget
   base16-schemes
+  wl-clipboard
+    xclip
+  
   ];
 
 users.users.sam.shell = pkgs.nushell;

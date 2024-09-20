@@ -6,7 +6,7 @@
 	../../user/app/emacs.nix
 	../../user/app/nvim.nix
 	../../user/theme/theme.nix
-	../../user/wm/hypr.nix
+	../../user/wm/i3/i3.nix
 
   ];
   # Home Manager needs a bit of information about you and the paths it should
@@ -47,7 +47,6 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-    alacritty
     firefox
     keepassxc
     pika-backup
@@ -55,13 +54,15 @@
     vlc
     slack
     vscodium
-    python3
     cargo
     nil
-    xclip
-    dolphin
+    htop
+    nvtopPackages.full
+    nerdfonts
   ];
-
+  gtk.enable = true;
+  qt.enable = true;
+  programs.alacritty.enable = true;
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.

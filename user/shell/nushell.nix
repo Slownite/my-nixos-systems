@@ -44,6 +44,9 @@
        t = "tmux";
        ta = "tmux a";
        copy = "xclip -selection clipboard";
+       ga = "git add";
+       gc = "git commit -m";
+       gp = "git push";
        };
   };
   programs.zoxide = {
