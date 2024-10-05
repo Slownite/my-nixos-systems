@@ -25,7 +25,7 @@ then:
 ** Shell
 - [x] nushell configuration
 ** Neovim
-- [x] move config from lua to nixvim
+- [ ] move config from lua to nixvim
 ** Emacs
 - [x] setup support for org mode
 - [x] setup support for nu language
