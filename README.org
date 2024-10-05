@@ -24,6 +24,7 @@ then:
 - [ ] sound configuration
 ** Shell
 - [x] nushell configuration
+- [x] tmux configuration
 ** Neovim
 - [ ] move config from lua to nixvim
 ** Emacs
