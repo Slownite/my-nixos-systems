@@ -31,9 +31,11 @@ then:
 - [x] setup support for org mode
 - [x] setup support for nu language
 - [x] setup support for nix language
+- [x] setup support for bash language
+- [x] setup support for zig
+- [x] setup support for C/C++
+- [ ] setup support for markdown
 - [ ] setup support for python
-- [ ] setup support for zig
-- [ ] setup support for C/C++
 - [ ] setup support for golang
 ** Theming
  - [x] stylix

@@ -20,7 +20,14 @@
     python312Packages.markdown
     nodejs_22
     ispell
-
+    dockfmt
+    python312Packages.pyflakes
+    proselint
+    llvmPackages_12.clang-tools
+    poetry
+    glslang
+    shfmt
+    zls
   ];
   programs.emacs = {
     enable = true;
