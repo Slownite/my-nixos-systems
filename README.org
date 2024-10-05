@@ -1,9 +1,38 @@
 #+title: my-nix-config
 This repo contains every config files for all my setup for nixos
 * Installation
+** New nixos instance
 To install a new instance of nix os do:
 #+begin_src bash
-cd my-nix-config/
-sudo chmod +x setup.py
-sudo ./setup.py .
+git clone https://github.com/Slownite/my-nixos-systems.git
+cd my-nixos-systems
+sudo nixos-rebuild switch --flake ./#<device_name>
 #+end_src
+** New home manager instance
+First install [[https://home-manager.dev/][home-manager]]
+then:
+#+begin_src bash
+    home-manager switch --flake ./#sam
+#+end_src
+* Roadmap
+** I3
+- [x] mouvment configuration
+- [x] terminal configuration
+- [x] feh configuration
+- [ ] rofi configuration
+- [ ] dunst configuration
+- [ ] sound configuration
+** Shell
+- [x] nushell configuration
+** Neovim
+- [x] move config from lua to nixvim
+** Emacs
+- [x] setup support for org mode
+- [x] setup support for nu language
+- [x] setup support for nix language
+- [ ] setup support for python
+- [ ] setup support for zig
+- [ ] setup support for C/C++
+- [ ] setup support for golang
+** Theming
+ - [x] stylix

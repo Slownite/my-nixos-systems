@@ -2,22 +2,21 @@
 
 {
   imports = [
-  	../../user/shell/sh.nix
-	../../user/app/emacs.nix
-	../../user/app/nvim.nix
-	../../user/theme/theme.nix
-	../../user/wm/i3/i3.nix
+    ../../user/shell/sh.nix
+    ../../user/app/emacs.nix
+    ../../user/app/nvim.nix
+    ../../user/theme/theme.nix
+    ../../user/wm/i3/i3.nix
+    ../../user/pkgs/python.nix
+    ../../user/app/alacritty.nix
 
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "sam";
   home.homeDirectory = "/home/sam";
-  
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
 
+  nixpkgs.config = { allowUnfree = true; };
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -60,10 +59,12 @@
     nvtopPackages.full
     nerdfonts
     nix-index
+    spotify
+    brave
+    filezilla
   ];
   gtk.enable = true;
   qt.enable = true;
-  programs.alacritty.enable = true;
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -82,7 +83,7 @@
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
-  # shell provided by Home Manager. If you don't want to manage your shell
+  # shell provided by ager. If you don't want to manage your shell
   # through Home Manager then you have to manually source 'hm-session-vars.sh'
   # located at either
   #

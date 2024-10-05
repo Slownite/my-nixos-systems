@@ -5,16 +5,17 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./../../system/hardware/nvidia.nix
-      ../../user/app/gaming.nix
-      ../../system/bin/build_essentials.nix
-      ../../user/app/git.nix
-      ../../system/wm/gnome.nix
-      ../../system/wm/i3.nix
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./../../system/hardware/nvidia.nix
+    ../../user/app/gaming.nix
+    ../../system/bin/build_essentials.nix
+    ../../user/app/git.nix
+    ../../system/wm/gnome.nix
+    ../../system/wm/i3.nix
+    ../../system/app/emacs.nix
+    ../../system/hardware/printer.nix
+  ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -50,7 +51,6 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
@@ -84,22 +84,21 @@
     isNormalUser = true;
     description = "sam";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    ];
+    packages = with pkgs; [ ];
   };
 
   nixpkgs.config.allowUnfree = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  wget
-  base16-schemes
-  wl-clipboard
+    wget
+    base16-schemes
+    wl-clipboard
     xclip
-  
+
   ];
 
-users.users.sam.shell = pkgs.nushell;
+  users.users.sam.shell = pkgs.nushell;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

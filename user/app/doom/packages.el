@@ -50,3 +50,7 @@
 
 (package! pyvenv)
 (package! catppuccin-theme)
+(package! nushell-mode :recipe (:host github :repo "mrkkrp/nushell-mode"))
+(use-package envrc
+  :config
+  (envrc-global-mode))

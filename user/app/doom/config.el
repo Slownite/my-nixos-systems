@@ -46,7 +46,9 @@
 (setq org-todo-keywords
       '((sequence "TODO" "IN-PROGRESS" "WAITING" "DONE")))
 
-
+;; vterm config
+;; default vterm shell
+(setq vterm-shell "/home/sam/.nix-profile/bin/nu")
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -79,9 +81,3 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-(after! lsp-python
-  (setq lsp-pyls-server-command (concat pyvenv-virtual-env "bin/pyls"))
-  (add-hook 'lsp-after-initialize-hook
-            (lambda ()
-              (when (bound-and-true-p pyvenv-virtual-env)
-                (lsp-restart-workspace)))))
