@@ -16,26 +16,29 @@ then:
 #+end_src
 * Roadmap
 ** I3
-- [x] mouvment configuration
-- [x] terminal configuration
-- [x] feh configuration
+- [X] mouvment configuration
+- [X] terminal configuration
+- [X] feh configuration
+- [ ] polybar configuration
 - [ ] rofi configuration
 - [ ] dunst configuration
-- [ ] sound configuration
+- [ ] picom configuration
 ** Shell
-- [x] nushell configuration
-- [x] tmux configuration
+- [X] nushell configuration
+- [X] tmux configuration
 ** Neovim
 - [ ] move config from lua to nixvim
 ** Emacs
-- [x] setup support for org mode
-- [x] setup support for nu language
-- [x] setup support for nix language
-- [x] setup support for bash language
-- [x] setup support for zig
-- [x] setup support for C/C++
+- [X] setup support for org mode
+- [X] setup org agenda
+- [X] setup support for nu language
+- [X] setup support for nix language
+- [X] setup support for bash language
+- [X] setup support for zig
+- [X] setup support for C/C++
 - [ ] setup support for markdown
 - [ ] setup support for python
 - [ ] setup support for golang
 ** Theming
- - [x] stylix
+ - [X] stylix
+ - [ ] nix color (for program not supported by stylix)

@@ -42,14 +42,18 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
-(setq org-agenda-diary-file "~/org/diary.org")
-(setq org-todo-keywords
-      '((sequence "TODO" "IN-PROGRESS" "WAITING" "DONE")))
-
+;; org agenda config
+;; directory for org agenda
+(after! org
+  (setq org-agenda-files '("~/org/agenda.org")))
 ;; vterm config
 ;; default vterm shell
 (setq vterm-shell "/home/sam/.nix-profile/bin/nu")
-
+;; Dired config
+;; keybindings
+(evil-define-key 'normal dired-mode-map
+  (kbd "l") 'dired-open-file
+  (kbd "k") 'dired-up-directory)
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
 ;;

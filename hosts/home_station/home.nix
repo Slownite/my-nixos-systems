@@ -62,6 +62,7 @@
     spotify
     brave
     filezilla
+    localsend
   ];
   gtk.enable = true;
   qt.enable = true;

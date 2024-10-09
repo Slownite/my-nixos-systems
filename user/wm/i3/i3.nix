@@ -1,16 +1,17 @@
 { config, lib, pkgs, ... }:
 let cfg = config.xsession.windowManager.i3;
 in {
-  imports = [ ../../app/flameshot.nix ./polybar.nix ];
+  imports = [ ./polybar.nix ../../app/flameshot.nix ];
   programs.rofi.enable = true;
   programs.feh.enable = true;
   xsession.windowManager.i3 = {
     enable = true;
     extraConfig = ''
       exec_always feh --bg-scale ${../../theme/flatppuccin_4k_macchiato.png}
-      exec --no-startup-id polybar top > /tmp/polybar.log 2>&1
-      exec --no-startup-id alacritty && i3-msg "[class="Alacritty"] move scratchpad"
+      exec --no-startup-id polybar main > /tmp/polybar.log 2>&1
     '';
+
+    # exec --no-startup-id alacritty && i3-msg "[class="Alacritty"] move scratchpad"
     package = pkgs.i3;
     config = {
       bars = [ ];
@@ -27,7 +28,7 @@ in {
         "${cfg.config.modifier}+space" = "exec ${cfg.config.menu}";
         "${cfg.config.modifier}+b" = "exec firefox";
         "${cfg.config.modifier}+Shift+b" = "exec brave";
-        "${cfg.config.modifier}+e" = "exec nautilus";
+        "${cfg.config.modifier}+e" = "exec emacs --eval '(dired \"~\")'";
         "${cfg.config.modifier}+p" = "exec flameshot";
         "${cfg.config.modifier}+c" = "exec emacsclient -c -a emacs";
 
@@ -46,7 +47,7 @@ in {
         "${cfg.config.modifier}+f" = "fullscreen toggle";
 
         "${cfg.config.modifier}+s" = "layout toggle split";
-        "${cfg.config.modifier}+t" = "layout tabbed";
+        "${cfg.config.modifier}+Shift+z" = "layout tabbed";
         "${cfg.config.modifier}+w" = "layout toggle split";
 
         "${cfg.config.modifier}+Shift+d" = "floating toggle";

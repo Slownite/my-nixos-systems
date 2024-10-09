@@ -5,10 +5,10 @@
     windowManager = {
       i3 = {
         enable = true;
-        extraPackages = with pkgs; [
-          i3status # gives you the default i3 status bar
-          i3lock # default i3 screen locker
-        ];
+        extraPackages = with pkgs;
+          [
+            i3lock # default i3 screen locker
+          ];
       };
     };
   };
