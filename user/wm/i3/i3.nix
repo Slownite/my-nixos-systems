@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 let cfg = config.xsession.windowManager.i3;
 in {
-  imports = [ ./polybar.nix ../../app/flameshot.nix ];
+  imports = [ ./polybar.nix ./dunst.nix ../../app/flameshot.nix ];
   programs.rofi.enable = true;
   programs.feh.enable = true;
   xsession.windowManager.i3 = {

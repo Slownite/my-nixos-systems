@@ -17,6 +17,7 @@
     ../../system/hardware/printer.nix
     ../../system/hardware/audio.nix
     ../../system/app/container.nix
+    ../../system/app/ollama.nix
 
   ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -68,6 +69,7 @@
     description = "sam";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [ ];
+    shell = pkgs.nushell;
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -81,8 +83,6 @@
     pavucontrol
 
   ];
-
-  users.users.sam.shell = pkgs.nushell;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

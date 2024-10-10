@@ -17,22 +17,21 @@
 
   outputs = { self, nixpkgs, stylix, home-manager, nixpkgs-unstable, ... }:
     let
-      system = "x86_64-linux";  
-      unstable-pkgs = import nixpkgs-unstable {
-    inherit system;
-  };
+      system = "x86_64-linux";
+      unstable-pkgs = import nixpkgs-unstable { inherit system; };
       overlays = [
         (self: super: {
           nushell = unstable-pkgs.nushell;
+          ollama = unstable-pkgs.ollama;
         })
       ];
       pkgs = import nixpkgs {
-            inherit system;
-            overlays = overlays;
-          };
+        inherit system;
+        overlays = overlays;
+      };
     in {
       nixosConfigurations = {
-      nixpkgs.overlays = overlays;
+        nixpkgs.overlays = overlays;
         homeStation = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit system; };
           modules = [

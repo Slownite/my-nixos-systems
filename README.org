@@ -19,9 +19,9 @@ then:
 - [X] mouvment configuration
 - [X] terminal configuration
 - [X] feh configuration
-- [ ] polybar configuration
+- [X] polybar configuration
 - [ ] rofi configuration
-- [ ] dunst configuration
+- [X] dunst configuration
 - [ ] picom configuration
 ** Shell
 - [X] nushell configuration
@@ -41,4 +41,3 @@ then:
 - [ ] setup support for golang
 ** Theming
  - [X] stylix
- - [ ] nix color (for program not supported by stylix)
