@@ -63,6 +63,10 @@
     brave
     filezilla
     localsend
+    cinnamon.nemo
+    zip
+    unzip
+    vscode-fhs
   ];
   gtk.enable = true;
   qt.enable = true;

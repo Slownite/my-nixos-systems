@@ -7,7 +7,7 @@ in {
   xsession.windowManager.i3 = {
     enable = true;
     extraConfig = ''
-      exec_always feh --bg-scale ${../../theme/flatppuccin_4k_macchiato.png}
+      exec_always feh --bg-scale ${../../theme/Cloudsnight.jpg}
       exec --no-startup-id polybar main > /tmp/polybar.log 2>&1
     '';
 
@@ -28,7 +28,7 @@ in {
         "${cfg.config.modifier}+space" = "exec ${cfg.config.menu}";
         "${cfg.config.modifier}+b" = "exec firefox";
         "${cfg.config.modifier}+Shift+b" = "exec brave";
-        "${cfg.config.modifier}+e" = "exec emacs --eval '(dired \"~\")'";
+        "${cfg.config.modifier}+e" = "exec nemo";
         "${cfg.config.modifier}+p" = "exec flameshot";
         "${cfg.config.modifier}+c" = "exec emacsclient -c -a emacs";
 

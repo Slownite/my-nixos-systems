@@ -16,6 +16,7 @@
     ../../system/app/emacs.nix
     ../../system/hardware/printer.nix
     ../../system/hardware/audio.nix
+    ../../system/app/container.nix
 
   ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
