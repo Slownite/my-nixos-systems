@@ -17,12 +17,13 @@ then:
 * Roadmap
 ** I3
 - [X] mouvment configuration
+- [X] i3lock configuration
 - [X] terminal configuration
 - [X] feh configuration
 - [X] polybar configuration
 - [X] rofi configuration
 - [X] dunst configuration
-- [ ] picom configuration
+- [X] picom configuration
 ** Shell
 - [X] nushell configuration
 - [X] tmux configuration

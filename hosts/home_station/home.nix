@@ -67,6 +67,7 @@
     zip
     unzip
     vscode-fhs
+    networkmanager
   ];
   gtk.enable = true;
   qt.enable = true;

@@ -63,6 +63,12 @@ in {
         date = "%d.%m.%y";
         label = "%time%";
       };
+      "module/network" = {
+        type = "internal/network";
+        interval = 3.0;
+        accumulate-stats = true;
+        speed-unit = "";
+      };
       "module/date" = {
         type = "internal/date";
         interval = 3600;

@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 let cfg = config.xsession.windowManager.i3;
 in {
-  imports = [ ./polybar.nix ./dunst.nix ../../app/flameshot.nix ];
+  imports = [ ./polybar.nix ./picom.nix ./dunst.nix ../../app/flameshot.nix ];
   programs.rofi = {
     enable = true;
     theme = "${../../theme/rofi-themes/squared-macchiato.rasi}";
@@ -34,6 +34,8 @@ in {
         "${cfg.config.modifier}+e" = "exec nemo";
         "${cfg.config.modifier}+bracketright" = "exec flameshot gui";
         "${cfg.config.modifier}+c" = "exec emacsclient -c -a emacs";
+        "${cfg.config.modifier}+Shift+x" =
+          "exec i3lock -i ${../../theme/black5_unicat.png}";
 
         "${cfg.config.modifier}+h" = "focus left";
         "${cfg.config.modifier}+j" = "focus down";
@@ -46,12 +48,11 @@ in {
         "${cfg.config.modifier}+Shift+l" = "move right";
 
         "${cfg.config.modifier}+z" = "split h";
-        "${cfg.config.modifier}+v" = "split v";
+        "${cfg.config.modifier}+w" = "split v";
         "${cfg.config.modifier}+f" = "fullscreen toggle";
 
         "${cfg.config.modifier}+s" = "layout toggle split";
         "${cfg.config.modifier}+Shift+z" = "layout tabbed";
-        "${cfg.config.modifier}+w" = "layout toggle split";
 
         "${cfg.config.modifier}+Shift+d" = "floating toggle";
         "${cfg.config.modifier}+d" = "focus mode_toggle";
