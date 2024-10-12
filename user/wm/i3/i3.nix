@@ -2,7 +2,10 @@
 let cfg = config.xsession.windowManager.i3;
 in {
   imports = [ ./polybar.nix ./dunst.nix ../../app/flameshot.nix ];
-  programs.rofi.enable = true;
+  programs.rofi = {
+    enable = true;
+    theme = "${../../theme/rofi-themes/squared-macchiato.rasi}";
+  };
   programs.feh.enable = true;
   xsession.windowManager.i3 = {
     enable = true;
@@ -29,7 +32,7 @@ in {
         "${cfg.config.modifier}+b" = "exec firefox";
         "${cfg.config.modifier}+Shift+b" = "exec brave";
         "${cfg.config.modifier}+e" = "exec nemo";
-        "${cfg.config.modifier}+p" = "exec flameshot";
+        "${cfg.config.modifier}+bracketright" = "exec flameshot gui";
         "${cfg.config.modifier}+c" = "exec emacsclient -c -a emacs";
 
         "${cfg.config.modifier}+h" = "focus left";

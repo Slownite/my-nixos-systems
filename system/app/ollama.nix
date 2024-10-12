@@ -1,6 +1,13 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs-unstable, ... }:
 
 {
-
-  services.ollama.enable = true;
+  services.ollama = {
+    package = pkgs-unstable.ollama;
+    enable = true;
+    acceleration = "cuda";
+  };
+  services.open-webui = {
+    enable = true;
+    package = pkgs-unstable.open-webui;
+  };
 }

@@ -33,7 +33,7 @@ in {
         font-0 = "FantasqueSansMNerdFont:size=12:weight=bold:style=Bold;1";
         font-1 = "Kochi Gothic:style=bold:weight=bold:size=12;1";
         modules-center = "time";
-        modules-right = "cpu icon-cpu spacer date";
+        modules-right = "cpu icon-cpu spacer tray spacer date";
         modules-left = "i3";
       };
       "module/spacer" = {
@@ -82,6 +82,7 @@ in {
         interval = 0.5;
         warn-percentage = 95;
       };
+      "module/tray" = { type = "internal/tray"; };
     };
 
     script = "";

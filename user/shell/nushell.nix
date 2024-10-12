@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, pkgs-unstable, ... }:
 
 {
   # Your existing home packages
@@ -60,6 +60,7 @@
       gc = "git commit -m";
       gp = "git push";
     };
+    package = pkgs-unstable.nushell;
   };
 
   # Configure Zoxide with Nushell integration

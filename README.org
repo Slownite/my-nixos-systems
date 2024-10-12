@@ -20,7 +20,7 @@ then:
 - [X] terminal configuration
 - [X] feh configuration
 - [X] polybar configuration
-- [ ] rofi configuration
+- [X] rofi configuration
 - [X] dunst configuration
 - [ ] picom configuration
 ** Shell

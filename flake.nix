@@ -18,22 +18,22 @@
   outputs = { self, nixpkgs, stylix, home-manager, nixpkgs-unstable, ... }:
     let
       system = "x86_64-linux";
-      unstable-pkgs = import nixpkgs-unstable { inherit system; };
-      overlays = [
-        (self: super: {
-          nushell = unstable-pkgs.nushell;
-          ollama = unstable-pkgs.ollama;
-        })
-      ];
+
       pkgs = import nixpkgs {
         inherit system;
-        overlays = overlays;
+        config.allowUnfree = true;
+      };
+      pkgs-unstable = import nixpkgs-unstable {
+        inherit system;
+        config.allowUnfree = true;
       };
     in {
       nixosConfigurations = {
-        nixpkgs.overlays = overlays;
         homeStation = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit system; };
+          specialArgs = {
+            inherit system;
+            inherit pkgs-unstable;
+          };
           modules = [
             home-manager.nixosModules.home-manager
             ./hosts/home_station/configuration.nix
@@ -43,6 +43,7 @@
       homeConfigurations = {
         sam = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
+          extraSpecialArgs = { inherit pkgs-unstable; };
           modules =
             [ stylix.homeManagerModules.stylix ./hosts/home_station/home.nix ];
         };
