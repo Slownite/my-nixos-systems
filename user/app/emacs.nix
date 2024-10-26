@@ -6,22 +6,13 @@
     fd
     zig
     shellcheck
-    python312Packages.isort
-    pipenv
-    # python312Packages.nose
-    python312Packages.python-lsp-server
-    emacsPackages.pyimport
-    black
     direnv
     nerdfonts
-    python312Packages.pytest
-    pyenv
     nixfmt-classic
-    python312Packages.markdown
+    nixd
     nodejs_22
     ispell
     dockfmt
-    python312Packages.pyflakes
     proselint
     llvmPackages_12.clang-tools
     poetry

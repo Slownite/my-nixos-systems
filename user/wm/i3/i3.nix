@@ -1,7 +1,13 @@
 { config, lib, pkgs, ... }:
 let cfg = config.xsession.windowManager.i3;
 in {
-  imports = [ ./polybar.nix ./picom.nix ./dunst.nix ../../app/flameshot.nix ];
+  imports = [
+    ./polybar.nix
+    ./picom.nix
+    ./dunst.nix
+    ../../app/flameshot.nix
+ #   ./wallpaper.nix
+  ];
   programs.rofi = {
     enable = true;
     theme = "${../../theme/rofi-themes/squared-macchiato.rasi}";
@@ -10,10 +16,12 @@ in {
   xsession.windowManager.i3 = {
     enable = true;
     extraConfig = ''
-      exec_always feh --bg-scale ${../../theme/Cloudsnight.jpg}
+      exec --no-startup-id feh --bg-scale ${../../theme/Cloudsnight.jpg}
       exec --no-startup-id polybar main > /tmp/polybar.log 2>&1
+
     '';
 
+    # exec --no-startup-id ${config.home.file."wallpaper.sh"}/bin/wallpaper.sh
     # exec --no-startup-id alacritty && i3-msg "[class="Alacritty"] move scratchpad"
     package = pkgs.i3;
     config = {
@@ -31,7 +39,7 @@ in {
         "${cfg.config.modifier}+space" = "exec ${cfg.config.menu}";
         "${cfg.config.modifier}+b" = "exec firefox";
         "${cfg.config.modifier}+Shift+b" = "exec brave";
-        "${cfg.config.modifier}+e" = "exec nemo";
+        "${cfg.config.modifier}+e" = "exec nautilus";
         "${cfg.config.modifier}+bracketright" = "exec flameshot gui";
         "${cfg.config.modifier}+c" = "exec emacsclient -c -a emacs";
         "${cfg.config.modifier}+Shift+x" =

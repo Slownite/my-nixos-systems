@@ -8,6 +8,7 @@
     ../../user/theme/theme.nix
     ../../user/wm/i3/i3.nix
     ../../user/pkgs/python.nix
+    ../../user/pkgs/go.nix
     ../../user/app/alacritty.nix
 
   ];
@@ -54,20 +55,19 @@
     slack
     vscodium
     cargo
-    nil
     htop
     nvtopPackages.full
     nerdfonts
     nix-index
     spotify
     brave
-    filezilla
     localsend
-    cinnamon.nemo
     zip
     unzip
     vscode-fhs
     networkmanager
+    magic-wormhole
+    onlyoffice-bin_latest
   ];
   gtk.enable = true;
   qt.enable = true;
@@ -103,9 +103,7 @@
   #
   #  /etc/profiles/per-user/sam/etc/profile.d/hm-session-vars.sh
   #
-  home.sessionVariables = {
-    #EDITOR = "emacs";
-  };
+  home.sessionVariables = { EDITOR = "emacs"; };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

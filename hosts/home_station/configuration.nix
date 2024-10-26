@@ -13,11 +13,11 @@
     ../../user/app/git.nix
     ../../system/wm/gnome.nix
     ../../system/wm/i3.nix
-    ../../system/app/emacs.nix
     ../../system/hardware/printer.nix
     ../../system/hardware/audio.nix
-    ../../system/app/container.nix
-    ../../system/app/ollama.nix
+    ../../system/services/emacs.nix
+    ../../system/services/container.nix
+    ../../system/services/ollama.nix
 
   ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -81,9 +81,7 @@
     wl-clipboard
     xclip
     pavucontrol
-
   ];
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -95,13 +93,13 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 8080 ];
+  networking.firewall.allowedUDPPorts = [ ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
