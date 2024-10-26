@@ -48,12 +48,32 @@
             [ stylix.homeManagerModules.stylix ./hosts/home_station/home.nix ];
         };
       };
-      homelab = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit system; };
-        modules = [ ./hosts/homelab/configuration.nix ];
+      homelabHades = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit system;
+          inherit pkgs-unstable;
+        };
+        modules = [ ./hosts/homelab/hades/configuration.nix ];
+      };
+      homelabZeus = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit system;
+          inherit pkgs-unstable;
+        };
+        modules = [ ./hosts/homelab/zeus/configuration.nix ];
+      };
+      homelabPosseidon = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit system;
+          inherit pkgs-unstable;
+        };
+        modules = [ ./hosts/homelab/posseidon/configuration.nix ];
       };
       homeLaptop = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit system; };
+        specialArgs = {
+          inherit system;
+          inherit pkgs-unstable;
+        };
         modules = [ ./hosts/home_laptop/configuration.nix ];
       };
       workLaptop = nixpkgs.lib.nixosSystem {
