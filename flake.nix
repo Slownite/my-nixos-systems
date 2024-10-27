@@ -39,6 +39,42 @@
             ./hosts/home_station/configuration.nix
           ];
         };
+        homelabHades = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit system;
+            inherit pkgs-unstable;
+          };
+          modules = [ ./hosts/homelab/hades/configuration.nix ];
+        };
+        homelabHermes = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit system;
+            inherit pkgs-unstable;
+          };
+          modules = [ ./hosts/homelab/hermes/configuration.nix ];
+        };
+        homelabPosseidon = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit system;
+            inherit pkgs-unstable;
+          };
+          modules = [ ./hosts/homelab/posseidon/configuration.nix ];
+        };
+        homeLaptop = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit system;
+            inherit pkgs-unstable;
+          };
+          modules = [ ./hosts/home_laptop/configuration.nix ];
+        };
+        workLaptop = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit system; };
+          modules = [ ./hosts/work_laptop/configuration.nix ];
+        };
+        workStation = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit system; };
+          modules = [ ./hosts/work_station/configuration.nix ];
+        };
       };
       homeConfigurations = {
         sam = home-manager.lib.homeManagerConfiguration {
@@ -47,42 +83,6 @@
           modules =
             [ stylix.homeManagerModules.stylix ./hosts/home_station/home.nix ];
         };
-      };
-      homelabHades = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit system;
-          inherit pkgs-unstable;
-        };
-        modules = [ ./hosts/homelab/hades/configuration.nix ];
-      };
-      homelabZeus = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit system;
-          inherit pkgs-unstable;
-        };
-        modules = [ ./hosts/homelab/zeus/configuration.nix ];
-      };
-      homelabPosseidon = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit system;
-          inherit pkgs-unstable;
-        };
-        modules = [ ./hosts/homelab/posseidon/configuration.nix ];
-      };
-      homeLaptop = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit system;
-          inherit pkgs-unstable;
-        };
-        modules = [ ./hosts/home_laptop/configuration.nix ];
-      };
-      workLaptop = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit system; };
-        modules = [ ./hosts/work_laptop/configuration.nix ];
-      };
-      workStation = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit system; };
-        modules = [ ./hosts/work_station/configuration.nix ];
       };
     };
 }

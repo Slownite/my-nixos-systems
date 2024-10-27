@@ -3,6 +3,8 @@ let storage = "/nextcloud-data/";
 in {
   services.nextcloud = {
     enable = true;
-    dataDir = "${storage}";
+    datadir = "${storage}";
+    hostName = "nextcloud";
+    config = { adminpassFile = "/home/sam/netcloud_password"; };
   };
 }
