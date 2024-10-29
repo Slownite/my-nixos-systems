@@ -42,10 +42,19 @@ in {
 
       defaultGateway = "192.168.8.1"; # Your network's gateway
       nameservers = [ "8.8.8.8" "8.8.4.4" ];
+
       firewall = {
         enable = true;
         allowedTCPPorts = [ 22 ];
         allowedUDPPorts = [ ];
+      };
+    };
+    # Enable the OpenSSH daemon.
+    services.openssh = lib.mkDefault {
+      enable = true;
+      settings = {
+        PermitRootLogin = "no"; # Recommended for security
+        PasswordAuthentication = false; # Enforce key-based auth
       };
     };
   };

@@ -13,6 +13,8 @@
       "100:class_g = 'Rofi'"
       "100:class_g = 'i3lock'"
       "100:class_g = 'I3lock'"
+      "100:fullscreen"
+
     ];
   };
 }

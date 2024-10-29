@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, unstable-pkgs, ... }:
+{ config, lib, pkgs, unstable-pkgs, ... }:
 
 {
   imports = [ # Include the results of the hardware scan.
@@ -24,7 +24,13 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  networking.hostName = "home_station"; # Define your hostname.
+
+  fileSystems."/mnt/disk2" = {
+    device = "78fa6c7a-5827-4e27-a6dd-ef198d3a7f10"; # Mount by UUID
+    fsType = "ext4"; # Filesystem type
+    options = [ "defaults" ]; # Optional mount options
+  };
+  networking.hostName = lib.mkForce "home_station"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -100,7 +106,6 @@
   networking.firewall.allowedUDPPorts = [ ];
   # Or disable the firewall altogether.
   networking.firewall.enable = true;
-
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave

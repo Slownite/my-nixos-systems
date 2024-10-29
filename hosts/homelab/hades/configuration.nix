@@ -18,8 +18,7 @@
     hostIpAdress = "192.168.8.100";
   };
   programs.bash = {
-    enable = true;
-    shellinit = ''
+    shellInit = ''
       ░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░▒▓███████▓▒░░▒▓████████▓▒░░▒▓███████▓▒░
       ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░
       ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░
@@ -72,6 +71,9 @@
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [ tree ];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID+NssKGri2NM1UCTAy68LvclzeFjJWKMECkJauMIPUs snfdiop@outlook.com"
+    ];
   };
 
   # List packages installed in system profile. To search, run:
@@ -83,12 +85,12 @@
     vbetool
     magic-wormhole
   ];
-  systemd.services.screen-off = {
-    description = "Turn off the screen at boot";
-    after = [ "multi-user.target" ];
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig.ExecStart = "${pkgs.vbetool}/bin/vbetool dpms off";
-  };
+  # systemd.services.screen-off = {
+  #   description = "Turn off the screen at boot";
+  #   after = [ "multi-user.target" ];
+  #   wantedBy = [ "multi-user.target" ];
+  #   serviceConfig.ExecStart = "${pkgs.vbetool}/bin/vbetool dpms off";
+  # };
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -98,9 +100,6 @@
   # };
 
   # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
