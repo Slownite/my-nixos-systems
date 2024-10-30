@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, pkgs-unstable, ... }:
 
 {
   imports = [
@@ -30,7 +30,7 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = with pkgs; [
+  home.packages = [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -47,28 +47,29 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-    firefox
-    keepassxc
-    pika-backup
-    discord
-    vlc
-    slack
-    vscodium
-    cargo
-    htop
-    nvtopPackages.full
-    nerdfonts
-    nix-index
-    spotify
-    brave
-    localsend
-    zip
-    unzip
-    vscode-fhs
-    networkmanager
-    magic-wormhole
-    onlyoffice-bin_latest
+    pkgs.firefox
+    pkgs.keepassxc
+    pkgs.pika-backup
+    pkgs.discord
+    pkgs.vlc
+    pkgs.slack
+    pkgs.vscodium
+    pkgs.cargo
+    pkgs.htop
+    pkgs.nvtopPackages.full
+    pkgs.nerdfonts
+    pkgs.nix-index
+    pkgs.spotify
+    pkgs.brave
+    pkgs.localsend
+    pkgs.zip
+    pkgs.unzip
+    pkgs.vscode-fhs
+    pkgs.magic-wormhole
+    pkgs.onlyoffice-bin_latest
+    pkgs-unstable.fabric-ai
   ];
+
   gtk.enable = true;
   qt.enable = true;
 

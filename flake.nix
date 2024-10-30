@@ -39,17 +39,6 @@
             ./hosts/home_station/configuration.nix
           ];
         };
-        homeStationIso = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit system;
-            inherit pkgs-unstable;
-          };
-          modules = [
-            "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
-            "${nixpkgs}/nixos/modules/installer/cd-dvd/channel.nix"
-            ./hosts/home_station/iso.nix
-          ];
-        };
         homelabHades = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit system;
@@ -57,34 +46,12 @@
           };
           modules = [ ./hosts/homelab/hades/configuration.nix ];
         };
-        homelabHadesIso = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit system;
-            inherit pkgs-unstable;
-          };
-          modules = [
-            "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
-            "${nixpkgs}/nixos/modules/installer/cd-dvd/channel.nix"
-            ./hosts/homelab/hades/iso.nix
-          ];
-        };
         homelabHermes = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit system;
             inherit pkgs-unstable;
           };
           modules = [ ./hosts/homelab/hermes/configuration.nix ];
-        };
-        homelabHermesIso = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit system;
-            inherit pkgs-unstable;
-          };
-          modules = [
-            "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
-            "${nixpkgs}/nixos/modules/installer/cd-dvd/channel.nix"
-            ./hosts/homelab/hermes/iso.nix
-          ];
         };
         homelabCharon = nixpkgs.lib.nixosSystem {
           specialArgs = {
