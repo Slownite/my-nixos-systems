@@ -1,13 +1,13 @@
 { config, lib, pkgs, ... }:
 
 {
-  logind = {
+  services.logind = {
     lidSwitch = "ignore";
     extraConfig = ''
       HandlePowerKey=ignore
     '';
   };
-  acpid = {
+  services.acpid = {
     enable = true;
     lidEventCommands = ''
       export PATH=$PATH:/run/current-system/sw/bin
