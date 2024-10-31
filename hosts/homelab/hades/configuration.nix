@@ -14,7 +14,7 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelParams = [ "consoleblank=60" ];
+  boot.kernelParams = [ "nomodeset" "consoleblank=0" ];
   hypervisor = {
     enable = true;
     hostIpAdress = "192.168.8.100";
