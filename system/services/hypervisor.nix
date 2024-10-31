@@ -24,6 +24,7 @@ in {
       qemu.package = pkgs.qemu_kvm; # Use KVM-enabled QEMU
     };
 
+    environment.systemPackages = with pkgs; [ virt-manager ];
     # Add your user to the 'libvirtd' group
     users.users.sam.extraGroups = [ "libvirtd" ];
 
