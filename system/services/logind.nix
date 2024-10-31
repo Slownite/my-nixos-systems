@@ -1,10 +1,29 @@
 { config, lib, pkgs, ... }:
 
 {
-  services.logind = {
-    # Ignore the lid switch action to keep the server running.
-    lidSwitch = "lock";
-    lidSwitchDocked = "lock";
-    lidSwitchExternalPower = "lock";
+  logind = {
+    lidSwitch = "ignore";
+    extraConfig = ''
+      HandlePowerKey=ignore
+    '';
+  };
+  acpid = {
+    enable = true;
+    lidEventCommands = ''
+      export PATH=$PATH:/run/current-system/sw/bin
+
+      lid_state=$(cat /proc/acpi/button/lid/LID0/state | awk '{print $NF}')
+      if [ $lid_state = "closed" ]; then
+        # Set brightness to zero
+        echo 0  > /sys/class/backlight/acpi_video0/brightness
+      else
+        # Reset the brightness
+        echo 50  > /sys/class/backlight/acpi_video0/brightness
+      fi
+    '';
+
+    powerEventCommands = ''
+      systemctl suspend
+    '';
   };
 }
