@@ -2,6 +2,7 @@
 
 {
   services.logind = {
+    enable = true;
     lidSwitch = "ignore";
     extraConfig = ''
       HandlePowerKey=ignore
