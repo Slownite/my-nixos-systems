@@ -85,12 +85,12 @@
     vbetool
     magic-wormhole
   ];
-  # systemd.services.screen-off = {
-  #   description = "Turn off the screen at boot";
-  #   after = [ "multi-user.target" ];
-  #   wantedBy = [ "multi-user.target" ];
-  #   serviceConfig.ExecStart = "${pkgs.vbetool}/bin/vbetool dpms off";
-  # };
+  systemd.services.screen-off = {
+    description = "Turn off the screen at boot";
+    after = [ "multi-user.target" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig.ExecStart = "${pkgs.vbetool}/bin/vbetool dpms off";
+  };
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
