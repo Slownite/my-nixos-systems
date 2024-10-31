@@ -8,7 +8,6 @@
   imports = [ # Include the results of the hardware scan.
     /etc/nixos/hardware-configuration.nix
     ../../../system/services/hypervisor.nix
-    ./disko-config.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
