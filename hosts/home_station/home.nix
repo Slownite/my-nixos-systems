@@ -68,6 +68,9 @@
     pkgs.magic-wormhole
     pkgs.onlyoffice-bin_latest
     pkgs-unstable.fabric-ai
+    pkgs.dvc
+    pkgs.ffmpeg
+    pkgs.nixos-generators
   ];
 
   gtk.enable = true;

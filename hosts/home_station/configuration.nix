@@ -1,4 +1,4 @@
-# Edit this configuration file to define what should be installed on
+
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
@@ -6,7 +6,7 @@
 
 {
   imports = [ # Include the results of the hardware scan.
-    /etc/nixos/hardware-configuration.nix
+    ./hardware-configuration.nix
     ./../../system/hardware/nvidia.nix
     ../../user/app/gaming.nix
     ../../system/bin/build_essentials.nix
@@ -24,12 +24,13 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  fileSystems."/mnt/disk2" = {
-    device = "78fa6c7a-5827-4e27-a6dd-ef198d3a7f10"; # Mount by UUID
-    fsType = "ext4"; # Filesystem type
-    options = [ "defaults" ]; # Optional mount options
-  };
+#boot.kernelParams = [ "acpi=strict" "nosmt" ];
+boot.blacklistedKernelModules = [ "kvm" "kvm-intel" "kvm-amd" ];
+ # fileSystems."/mnt/disk2" = {
+   # device = "78fa6c7a-5827-4e27-a6dd-ef198d3a7f10"; # Mount by UUID
+    #fsType = "ext4"; # Filesystem type
+    #options = [ "defaults" ]; # Optional mount options
+  #};
   networking.hostName = lib.mkForce "home_station"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -102,7 +103,7 @@
   services.openssh.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 8080 ];
+  networking.firewall.allowedTCPPorts = [ ];
   networking.firewall.allowedUDPPorts = [ ];
   # Or disable the firewall altogether.
   networking.firewall.enable = true;

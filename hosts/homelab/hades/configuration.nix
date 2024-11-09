@@ -8,7 +8,7 @@
   imports = [ # Include the results of the hardware scan.
     /etc/nixos/hardware-configuration.nix
     ../../../system/services/hypervisor.nix
-    ../../../system/services/logind.nix
+    ../common.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -20,7 +20,9 @@
   };
   programs.bash = {
     shellInit = ''
+    if [[ $- == *i* ]]; then
       figlet HADES
+    fi
     '';
   };
   services.xserver = {
@@ -70,25 +72,6 @@
   # services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.sam = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [ tree ];
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID+NssKGri2NM1UCTAy68LvclzeFjJWKMECkJauMIPUs snfdiop@outlook.com"
-    ];
-  };
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    git
-    magic-wormhole
-    figlet
-    tmux
-  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
