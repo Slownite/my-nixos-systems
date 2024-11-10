@@ -6,18 +6,33 @@
 
 {
   imports = [ # Include the results of the hardware scan.
-    <nixpkgs/nixos/modules/profiles/qemu-guest.nix>
+    /etc/nixos/hardware-configuration.nix
     ../../../system/services/container.nix
     # ../../../system/services/nextcloud.nix
     # ../../../system/services/jellyfin.nix
     # ../../../system/services/vaultwarden.nix
     ../common.nix
-  ];
-
-  # Use the systemd-boot EFI boot loader.
+  ]; 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  networking = {
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [ 22 ];
+      allowedUDPPorts = [];
+    };
+    interfaces.enp3s0.useDHCP = false;
+
+    # Create a bridge 'br0' including your physical interface
+    bridges.br0.interfaces = [ "enp3s0" ];
+
+    # Assign IP to the bridge
+    interfaces.br0.ipv4.addresses = [{
+      address = 192.168.8.101; # Your host's IP
+      prefixLength = 24;
+    }];
+  };
   programs.bash = {
     shellInit = ''
     if [[ $- == *i* ]]; then
@@ -75,12 +90,6 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-
-  # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 22 ];
-  networking.firewall.allowedUDPPorts = [ ];
-  # Or disable the firewall altogether.
-  networking.firewall.enable = true;
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
