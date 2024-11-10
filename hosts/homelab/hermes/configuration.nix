@@ -8,13 +8,14 @@
   imports = [ # Include the results of the hardware scan.
     /etc/nixos/hardware-configuration.nix
     ../../../system/services/container.nix
+    ../../../system/services/qmeu.nix
     # ../../../system/services/nextcloud.nix
     # ../../../system/services/jellyfin.nix
     # ../../../system/services/vaultwarden.nix
     ../common.nix
   ]; 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  # boot.loader.systemd-boot.enable = true;
+  # boot.loader.efi.canTouchEfiVariables = true;
 
   networking = {
     firewall = {
