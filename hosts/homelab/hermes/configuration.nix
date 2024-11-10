@@ -29,7 +29,7 @@
 
     # Assign IP to the bridge
     interfaces.br0.ipv4.addresses = [{
-      address = 192.168.8.101; # Your host's IP
+      address = "192.168.8.101"; # Your host's IP
       prefixLength = 24;
     }];
   };
