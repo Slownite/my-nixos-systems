@@ -8,11 +8,15 @@
   imports = [ # Include the results of the hardware scan.
     /etc/nixos/hardware-configuration.nix
     ../base.nix
+    #../../../system/services/nextcloud.nix
+    #../../../system/services/jellyfin.nix
+    ../../../system/services/vaultwarden.nix
   ]; 
   base = {
     enable = true;
     name = "Hermes";
   };
+  vaultwarden.enable = true;
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
   #
