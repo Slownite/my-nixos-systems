@@ -17,15 +17,6 @@
   # boot.loader.systemd-boot.enable = true;
   # boot.loader.efi.canTouchEfiVariables = true;
 
-  users.users.sam = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [ tree ];
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID+NssKGri2NM1UCTAy68LvclzeFjJWKMECkJauMIPUs snfdiop@outlook.com"
-    ];
-  };
-
   networking = {
     firewall = {
       enable = true;
