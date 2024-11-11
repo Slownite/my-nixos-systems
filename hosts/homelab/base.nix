@@ -29,7 +29,7 @@ in
     networking = {
       hostName = cfg.name;
       firewall = {
-        enable = true;
+        enable = false;
         allowedTCPPorts = [ 22 111 2049];
         allowedUDPPorts = [ 111 ];
       };
