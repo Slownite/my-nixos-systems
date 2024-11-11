@@ -23,16 +23,6 @@
       allowedTCPPorts = [ 22 ];
       allowedUDPPorts = [];
     };
-    interfaces.enp3s0.useDHCP = false;
-
-    # Create a bridge 'br0' including your physical interface
-    bridges.br0.interfaces = [ "enp3s0" ];
-
-    # Assign IP to the bridge
-    interfaces.br0.ipv4.addresses = [{
-      address = "192.168.8.101"; # Your host's IP
-      prefixLength = 24;
-    }];
   };
   programs.bash = {
     shellInit = ''
