@@ -30,8 +30,8 @@ in
       hostName = cfg.name;
       firewall = {
         enable = true;
-        allowedTCPPorts = [ 22 ];
-        allowedUDPPorts = [];
+        allowedTCPPorts = [ 22 111 2049];
+        allowedUDPPorts = [ 111 ];
       };
     };
   };
