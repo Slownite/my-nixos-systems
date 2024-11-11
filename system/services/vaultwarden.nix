@@ -15,7 +15,7 @@ in
     services.vaultwarden = { 
     enable = true;
     backupDir = "/mnt/nfs/backup/vaultwarden";
-    environment = {
+    config = {
       ROCKET_ADDRESS = "0.0.0.0";
       };
     };
