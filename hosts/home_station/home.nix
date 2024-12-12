@@ -71,6 +71,9 @@
     pkgs.dvc
     pkgs.ffmpeg
     pkgs.nixos-generators
+    pkgs.obsidian
+    pkgs.networkmanagerapplet
+    pkgs.zotero
   ];
 
   gtk.enable = true;
