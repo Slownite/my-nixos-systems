@@ -10,13 +10,13 @@ in {
   ];
   programs.rofi = {
     enable = true;
-    theme = "${../../theme/rofi-themes/squared-macchiato.rasi}";
+    theme = "${../../theme/rofi-themes/squared-nord.rasi}";
   };
   programs.feh.enable = true;
   xsession.windowManager.i3 = {
     enable = true;
     extraConfig = ''
-      exec --no-startup-id feh --bg-scale ${../../theme/Cloudsnight.jpg}
+      exec --no-startup-id feh --bg-scale ${../../theme/nord.png}
       exec --no-startup-id polybar main > /tmp/polybar.log 2>&1
 
     '';

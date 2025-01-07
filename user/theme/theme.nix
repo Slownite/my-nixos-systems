@@ -3,7 +3,7 @@
 {
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
     polarity = "dark";
     image = ./flatppuccin_4k_macchiato.png;
     autoEnable = true;

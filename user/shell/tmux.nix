@@ -9,7 +9,7 @@
     mouse = true;
     plugins = with pkgs; [
       tmuxPlugins.cpu
-      tmuxPlugins.catppuccin
+      tmuxPlugins.nord
       tmuxPlugins.tmux-fzf
     ];
   };
