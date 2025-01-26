@@ -94,7 +94,6 @@
           extraSpecialArgs = { inherit pkgs-unstable; };
           modules =
             [ stylix.homeManagerModules.stylix ./hosts/home_station/home.nix 
-           # nixvim.homeManagerModules.nvim
             ];
         };
       };
