@@ -1,11 +1,7 @@
 { config, lib, pkgs, pkgs-unstable, ... }:
 
 {
-  # Your existing home packages
-  home.packages = with pkgs; [ carapace pueue ];
 
-  # Enable and configure Pueue service
-  services.pueue.enable = true;
 
   # Configure Nushell
   programs.nushell = {
@@ -63,8 +59,18 @@
     package = pkgs-unstable.nushell;
   };
 
+  # Enable and configure Pueue service
+  services.pueue = {
+    enable = true;
+  };
   # Configure Zoxide with Nushell integration
   programs.zoxide = {
+    enable = true;
+    enableNushellIntegration = true;
+  };
+
+  # Configure carapace with Nushell integration
+  programs.carapace = {
     enable = true;
     enableNushellIntegration = true;
   };
