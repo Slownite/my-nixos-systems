@@ -40,6 +40,9 @@
         append /usr/bin/env
       )
     '';
+    extraEnv = ''
+      $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
+    '';
     shellAliases = {
       ll = "ls -l";
       la = "ls -la";
