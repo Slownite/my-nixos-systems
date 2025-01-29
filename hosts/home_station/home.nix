@@ -47,6 +47,7 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+    pkgs.bookworm
     pkgs.firefox
     pkgs.keepassxc
     pkgs.pika-backup
