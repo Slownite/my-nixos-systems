@@ -5,7 +5,7 @@
     nixpkgs = { url = "github:nixos/nixpkgs?ref=nixos-24.05"; };
     nixpkgs-unstable = { url = "github:NixOS/nixpkgs/nixos-unstable"; };
     stylix = {
-      url = "github:danth/stylix";
+      url = "github:danth/stylix/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
