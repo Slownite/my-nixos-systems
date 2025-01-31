@@ -47,6 +47,8 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+    pkgs.lazygit
+    pkgs.lazydocker
     pkgs.bookworm
     pkgs.firefox
     pkgs.keepassxc
