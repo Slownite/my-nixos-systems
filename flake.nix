@@ -33,59 +33,23 @@
           specialArgs = {
             inherit system;
             inherit pkgs-unstable;
+            inherit stylix;
           };
           modules = [
             home-manager.nixosModules.home-manager
             ./hosts/home_station/configuration.nix
           ];
         };
-        homelabHades = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit system;
-            inherit pkgs-unstable;
-          };
-          modules = [ ./hosts/homelab/hades/configuration.nix ];
-        };
-        homelabHermes = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit system;
-            inherit pkgs-unstable;
-          };
-          modules = [ ./hosts/homelab/hermes/configuration.nix ];
-        };
-        homelabCharon = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit system;
-            inherit pkgs-unstable;
-          };
-          modules = [ ./hosts/homelab/charon/configuration.nix ];
-        };
-
-        homelabCharonIso = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit system;
-            inherit pkgs-unstable;
-          };
-          modules = [
-            "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
-            "${nixpkgs}/nixos/modules/installer/cd-dvd/channel.nix"
-            ./hosts/homelab/charon/iso.nix
-          ];
-        };
         homeLaptop = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit system;
             inherit pkgs-unstable;
+            inherit stylix;
           };
-          modules = [ ./hosts/home_laptop/configuration.nix ];
-        };
-        workLaptop = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit system; };
-          modules = [ ./hosts/work_laptop/configuration.nix ];
-        };
-        workStation = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit system; };
-          modules = [ ./hosts/work_station/configuration.nix ];
+          modules = [ 
+          home-manager.nixosModules.home-manager
+          ./hosts/mac2020/configuration.nix 
+          ];
         };
       };
       homeConfigurations = {

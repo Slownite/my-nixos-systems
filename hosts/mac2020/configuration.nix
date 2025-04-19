@@ -2,12 +2,20 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, unstable-pkgs ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+    ../../system/bin/build_essentials.nix
+    ../../user/app/git.nix
+    ../../system/wm/gnome.nix
+    ../../system/wm/i3.nix
+    ../../system/hardware/printer.nix
+    ../../system/hardware/audio.nix
+    ../../system/services/emacs.nix
+    ../../system/services/container.nix
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -74,8 +82,8 @@
   };
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.xfce.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
   
 
   # Configure keymap in X11
@@ -100,9 +108,8 @@
   users.users.sam = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-      firefox
-    ];
+    packages = with pkgs; [];
+    shell = pkgs.nushell;
   };
 
   nixpkgs.config.allowUnfree = true;

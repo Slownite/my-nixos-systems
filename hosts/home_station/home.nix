@@ -77,6 +77,7 @@
     pkgs.obsidian
     pkgs.networkmanagerapplet
     pkgs.zotero
+    pkgs.audacity
   ];
 
   gtk.enable = true;
