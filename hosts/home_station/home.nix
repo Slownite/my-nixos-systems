@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
@@ -50,7 +50,7 @@
     pkgs.lazygit
     pkgs.lazydocker
     pkgs.bookworm
-    pkgs.firefox
+    pkgs.floorp
     pkgs.keepassxc
     pkgs.pika-backup
     pkgs.discord
@@ -70,7 +70,7 @@
     pkgs.vscode-fhs
     pkgs.magic-wormhole
     pkgs.onlyoffice-bin_latest
-    pkgs-unstable.fabric-ai
+    pkgs.fabric-ai
     pkgs.dvc
     pkgs.ffmpeg
     pkgs.nixos-generators
