@@ -76,7 +76,7 @@ boot.blacklistedKernelModules = [ "kvm" "kvm-intel" "kvm-amd" ];
     description = "sam";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [ ];
-    shell = pkgs.nushell;
+    shell = pkgs.zsh;
   };
 
   nixpkgs.config.allowUnfree = true;

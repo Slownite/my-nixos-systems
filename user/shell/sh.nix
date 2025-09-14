@@ -2,6 +2,6 @@
 
 {
   imports =
-    [ ./nushell.nix ./tmux.nix ./starship.nix ./fish.nix ./fastfetch.nix ];
+    [ ./zsh.nix ./tmux.nix ./starship.nix ./fish.nix ./fastfetch.nix ];
   home.packages = with pkgs; [ bat wget curl fzf ];
 }
