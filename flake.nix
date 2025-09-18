@@ -2,21 +2,23 @@
   description = "Reproducible build of my different NixOS hosts";
 
   inputs = {
-    nixpkgs = { url = "github:nixos/nixpkgs?ref=nixos-unstable"; };
-
+    nixpkgs = { url = "github:nixos/nixpkgs?ref=nixos-25.05"; };
+    base16-schemes = {
+	url="github:base16-project/base16-schemes";
+	flake=false;
+	};
     stylix = {
-      url = "github:danth/stylix/release-unstable";
+      url = "github:nix-community/stylix?ref=release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-unstable";
+      url = "github:nix-community/home-manager?ref=release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.stylix.follows = "stylix";
     };
   };
 
-  outputs = { self, nixpkgs, stylix, home-manager, ... }:
+  outputs = { self, nixpkgs, stylix, home-manager, base16-schemes, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -27,7 +29,7 @@
       nixosConfigurations = {
         homeStation = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit system stylix;
+            inherit system stylix base16-schemes;
             # Add anything else you want available to modules here
           };
           modules = [
@@ -40,6 +42,7 @@
       homeConfigurations = {
         sam = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
+	  extraSpecialArgs = { inherit base16-schemes;};
           modules = [
             stylix.homeManagerModules.stylix
             ./hosts/home_station/home.nix

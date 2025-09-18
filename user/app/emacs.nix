@@ -7,7 +7,6 @@
     zig
     shellcheck
     direnv
-    nerdfonts
     nixfmt-classic
     nixd
     nodejs_22

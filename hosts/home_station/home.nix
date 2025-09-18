@@ -39,7 +39,6 @@
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
     # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -60,7 +59,6 @@
     pkgs.cargo
     pkgs.htop
     pkgs.nvtopPackages.full
-    pkgs.nerdfonts
     pkgs.nix-index
     pkgs.spotify
     pkgs.brave
@@ -114,7 +112,7 @@
   #
   #  /etc/profiles/per-user/sam/etc/profile.d/hm-session-vars.sh
   #
-  home.sessionVariables = { EDITOR = "emacs"; };
+  home.sessionVariables = { EDITOR = "nvim"; };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

@@ -20,12 +20,24 @@
     ../../system/services/ollama.nix
 
   ];
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings = {
+	experimental-features = [ "nix-command" "flakes" ];
+	substituters = [
+    "https://cache.nixos.org"
+    "https://nix-community.cachix.org"
+    "https://cuda-maintainers.cachix.org"
+  ];
+  trusted-public-keys = [
+    "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+    "nix-community.cachix.org-1:mB9FSh9qf2dCimDs9KZc6T1lGghf+Te+9gu8Iq8l6w8="
+    "cuda-maintainers.cachix.org-1:7FhT3S3rC9Q510c6C4EDQ3rhbA63tKuo3qkSIoRbV7k="
+  ];
+};
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 #boot.kernelParams = [ "acpi=strict" "nosmt" ];
-boot.blacklistedKernelModules = [ "kvm" "kvm-intel" "kvm-amd" ];
+#boot.blacklistedKernelModules = [ "kvm" "kvm-intel" "kvm-amd" ];
  # fileSystems."/mnt/disk2" = {
    # device = "78fa6c7a-5827-4e27-a6dd-ef198d3a7f10"; # Mount by UUID
     #fsType = "ext4"; # Filesystem type
@@ -69,7 +81,7 @@ boot.blacklistedKernelModules = [ "kvm" "kvm-intel" "kvm-amd" ];
   };
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-
+programs.zsh.enable = true;        # recommended
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.sam = {
     isNormalUser = true;

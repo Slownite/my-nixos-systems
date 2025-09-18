@@ -37,7 +37,7 @@ in {
         "${cfg.config.modifier}+Return" = "exec ${cfg.config.terminal}";
         "${cfg.config.modifier}+Shift+q" = "kill";
         "${cfg.config.modifier}+space" = "exec ${cfg.config.menu}";
-        "${cfg.config.modifier}+b" = "exec firefox";
+        "${cfg.config.modifier}+b" = "exec floorp";
         "${cfg.config.modifier}+Shift+b" = "exec brave";
         "${cfg.config.modifier}+e" = "exec nautilus";
         "${cfg.config.modifier}+bracketright" = "exec flameshot gui";
