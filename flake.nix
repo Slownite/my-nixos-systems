@@ -44,7 +44,7 @@
           inherit pkgs;
 	  extraSpecialArgs = { inherit base16-schemes;};
           modules = [
-            stylix.homeManagerModules.stylix
+            stylix.homeModules.stylix
             ./hosts/home_station/home.nix
           ];
         };

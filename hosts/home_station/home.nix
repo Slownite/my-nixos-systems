@@ -76,6 +76,7 @@
     pkgs.networkmanagerapplet
     pkgs.zotero
     pkgs.audacity
+    pkgs.claude-code
   ];
 
   gtk.enable = true;
