@@ -1,44 +1,71 @@
-#+title: my-nix-config
-This repo contains every config files for all my setup for nixos
+#+title: My NixOS Systems Configuration
+
+This repository contains configuration files for my complete NixOS and Home Manager setup, providing a declarative and reproducible system configuration.
+
+* Overview
+
+This configuration includes:
+- Complete NixOS system configurations for multiple devices
+- Home Manager configurations for user-space applications
+- Window manager setup (i3wm) with complete theming
+- Development environment with Neovim, Emacs, and shell configurations
+- Unified theming using Stylix
+
 * Installation
-** New nixos instance
-To install a new instance of nix os do:
+
+** Prerequisites
+- NixOS installed on your system
+- Git installed
+- sudo access for system-level changes
+
+** NixOS System Configuration
+To install on a new NixOS instance:
+
 #+begin_src bash
 git clone https://github.com/Slownite/my-nixos-systems.git
 cd my-nixos-systems
 sudo nixos-rebuild switch --flake ./#<device_name>
 #+end_src
-** New home manager instance
-First install [[https://home-manager.dev/][home-manager]]
-then:
+
+Replace =<device_name>= with your specific device configuration.
+
+** Home Manager Configuration
+First install [[https://home-manager.dev/][Home Manager]], then apply the configuration:
+
 #+begin_src bash
-    home-manager switch --flake ./#sam
+home-manager switch --flake ./#sam
 #+end_src
-* Roadmap
-** I3
-- [X] mouvment configuration
-- [X] i3lock configuration
-- [X] terminal configuration
-- [X] feh configuration
-- [X] polybar configuration
-- [X] rofi configuration
-- [X] dunst configuration
-- [X] picom configuration
-** Shell
-- [X] nushell configuration
-- [X] tmux configuration
-** Neovim
-- [ ] move config from lua to nixvim
-** Emacs
-- [X] setup support for org mode
-- [X] setup org agenda
-- [X] setup support for nu language
-- [X] setup support for nix language
-- [X] setup support for bash language
-- [X] setup support for zig
-- [X] setup support for C/C++
-- [ ] setup support for markdown
-- [ ] setup support for python
-- [ ] setup support for golang
-** Theming
- - [X] stylix
+* Development Status
+
+** Window Manager (i3wm)
+- [X] Movement and keybinding configuration
+- [X] Screen lock configuration (i3lock)
+- [X] Terminal configuration
+- [X] Background management (feh)
+- [X] Status bar configuration (polybar)
+- [X] Application launcher (rofi)
+- [X] Notification system (dunst)
+- [X] Compositor configuration (picom)
+
+** Shell Environment
+- [X] Nushell configuration and customization
+- [X] Terminal multiplexer (tmux) setup
+
+** Text Editors
+*** Neovim
+- [ ] Migrate Lua configuration to nixvim module
+
+*** Emacs
+- [X] Org-mode support and configuration
+- [X] Org-agenda setup
+- [X] Language support: Nu shell
+- [X] Language support: Nix
+- [X] Language support: Bash
+- [X] Language support: Zig
+- [X] Language support: C/C++
+- [ ] Language support: Markdown
+- [ ] Language support: Python
+- [ ] Language support: Go
+
+** System Theming
+- [X] Stylix unified theme management
