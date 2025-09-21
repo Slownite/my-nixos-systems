@@ -18,7 +18,8 @@ in {
     extraConfig = ''
       exec --no-startup-id feh --bg-scale ${../../theme/nord.png}
       exec --no-startup-id polybar main > /tmp/polybar.log 2>&1
-
+      exec --no-startup-id nm-applet
+      exec --no-startup-id lxqt-policykit-agent
     '';
 
     # exec --no-startup-id ${config.home.file."wallpaper.sh"}/bin/wallpaper.sh

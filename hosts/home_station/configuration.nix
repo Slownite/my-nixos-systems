@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, pkgs, unstable-pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   imports = [ # Include the results of the hardware scan.
@@ -18,20 +18,11 @@
     ../../system/services/emacs.nix
     ../../system/services/container.nix
     ../../system/services/ollama.nix
+    ../../system/hardware/networking.nix
 
   ];
   nix.settings = {
 	experimental-features = [ "nix-command" "flakes" ];
-	substituters = [
-    "https://cache.nixos.org"
-    "https://nix-community.cachix.org"
-    "https://cuda-maintainers.cachix.org"
-  ];
-  trusted-public-keys = [
-    "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-    "nix-community.cachix.org-1:mB9FSh9qf2dCimDs9KZc6T1lGghf+Te+9gu8Iq8l6w8="
-    "cuda-maintainers.cachix.org-1:7FhT3S3rC9Q510c6C4EDQ3rhbA63tKuo3qkSIoRbV7k="
-  ];
 };
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -50,8 +41,6 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable networking
-  networking.networkmanager.enable = true;
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;

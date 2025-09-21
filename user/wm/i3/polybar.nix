@@ -9,11 +9,9 @@ let
     githubSupport = true;
   };
 in {
-
   services.polybar = {
     enable = true;
     package = i3SupportPolybar;
-    # Ensure the service starts after the graphical session
 
     settings = {
       "bar/main" = {
@@ -32,17 +30,26 @@ in {
         border-bottom-color = "#${colors.base00}";
         font-0 = "FantasqueSansMNerdFont:size=12:weight=bold:style=Bold;1";
         font-1 = "Kochi Gothic:style=bold:weight=bold:size=12;1";
+
         modules-center = "time";
-        modules-right = "cpu icon-cpu spacer tray spacer date";
+        # Removed "tray" here — the systray is NOT a module in polybar
+        modules-right = "cpu icon-cpu spacer date";
         modules-left = "i3";
+
+        # ✅ Real systray settings (this is what docks nm-applet)
+        tray-position = "right";   # left/center/right
+        tray-padding = 2;
+        tray-maxsize = 20;
+        # tray-scale = 1.0        # uncomment if you need size adjustments
       };
+
       "module/spacer" = {
         type = "custom/text";
         format = "   ";
       };
       "module/icon-cpu" = {
         type = "custom/text";
-        format = " ";
+        format = " ";
       };
       "module/pipewire-volume" = {
         type = "custom/script";
@@ -88,10 +95,10 @@ in {
         interval = 0.5;
         warn-percentage = 95;
       };
-      "module/tray" = { type = "internal/tray"; };
+
+      # ❌ Removed "module/tray" (polybar systray is configured in bar/main)
     };
 
     script = "";
   };
-
 }
