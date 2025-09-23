@@ -4,11 +4,9 @@
   imports = [
     ../../user/shell/sh.nix
     ../../user/app/emacs.nix
-    ../../user/app/nvim.nix
+    ../../user/app/nvf.nix
     ../../user/theme/theme.nix
     ../../user/wm/i3/i3.nix
-    ../../user/pkgs/python.nix
-    ../../user/pkgs/go.nix
     ../../user/app/alacritty.nix
 
   ];
@@ -77,6 +75,7 @@
     pkgs.zotero
     pkgs.audacity
     pkgs.claude-code
+    pkgs.protonvpn-gui
   ];
 
   gtk.enable = true;

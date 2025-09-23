@@ -10,15 +10,18 @@
     stylix = {
       url = "github:nix-community/stylix?ref=release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
+    }; 
+  nvf = {
+	url = "github:NotAShelf/nvf";
+	inputs.nixpkgs.follows = "nixpkgs";
+      };
     home-manager = {
       url = "github:nix-community/home-manager?ref=release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, stylix, home-manager, base16-schemes, ... }:
+  outputs = { self, nixpkgs, stylix, home-manager, base16-schemes, nvf,  ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -45,6 +48,7 @@
 	  extraSpecialArgs = { inherit base16-schemes;};
           modules = [
             stylix.homeModules.stylix
+	    nvf.homeManagerModules.default
             ./hosts/home_station/home.nix
           ];
         };
