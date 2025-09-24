@@ -19,16 +19,17 @@
     shfmt
     zls
   ];
-  programs.emacs = {
-    enable = true;
-    package = pkgs.emacs;
-  };
-  home.file = {
-    "./doom.d" = {
-      source = ./doom;
-      target = "/home/sam/.doom.d";
-      recursive = true;
-    };
-  };
+  
+
+  # programs.doom-emacs = {
+  #   enable = true;
+  #   doomDir = ./doom; # or e.g. `./doom.d` for a local configuration
+  # };
+  # home.file = {
+  #   "./doom.d" = {
+  #     source = ./doom;
+  #     target = "/home/sam/.doom.d";
+  #     recursive = true;
+  #   };
 }
 
