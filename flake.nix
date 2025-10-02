@@ -11,22 +11,13 @@
       url = "github:nix-community/stylix?ref=release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     }; 
-     nvf = {
-	url = "github:NotAShelf/nvf";
-	inputs.nixpkgs.follows = "nixpkgs";
-      };
-    doom-emacs = {
-          url = "github:marienz/nix-doom-emacs-unstraightened";
-          # Optional, to download less. Neither the module nor the overlay uses this input.
-          inputs.nixpkgs.follows = "";
-    };
     home-manager = {
       url = "github:nix-community/home-manager?ref=release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, stylix, home-manager, base16-schemes, nvf, doom-emacs, ... }:
+  outputs = { self, nixpkgs, stylix, home-manager, base16-schemes, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -53,8 +44,6 @@
 	  extraSpecialArgs = { inherit base16-schemes;};
           modules = [
             stylix.homeModules.stylix
-	    nvf.homeManagerModules.default
-            doom-emacs.homeModule
             ./hosts/home_station/home.nix
           ];
         };

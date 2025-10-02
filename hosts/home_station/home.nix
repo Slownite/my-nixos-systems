@@ -4,11 +4,11 @@
   imports = [
     ../../user/shell/sh.nix
     ../../user/app/emacs.nix
-    ../../user/app/nvf.nix
+    ../../user/app/nvim.nix
     ../../user/theme/theme.nix
     ../../user/wm/i3/i3.nix
     ../../user/app/alacritty.nix
-
+    ../../user/app/gui-apps.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -28,55 +28,6 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
-
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
-    pkgs.lazygit
-    pkgs.lazydocker
-    pkgs.bookworm
-    pkgs.floorp
-    pkgs.keepassxc
-    pkgs.pika-backup
-    pkgs.discord
-    pkgs.vlc
-    pkgs.slack
-    pkgs.vscodium
-    pkgs.cargo
-    pkgs.htop
-    pkgs.nvtopPackages.full
-    pkgs.nix-index
-    pkgs.spotify
-    pkgs.brave
-    pkgs.localsend
-    pkgs.zip
-    pkgs.unzip
-    pkgs.vscode-fhs
-    pkgs.magic-wormhole
-    pkgs.onlyoffice-bin_latest
-    pkgs.fabric-ai
-    pkgs.dvc
-    pkgs.ffmpeg
-    pkgs.nixos-generators
-    pkgs.obsidian
-    pkgs.networkmanagerapplet
-    pkgs.zotero
-    pkgs.audacity
-    pkgs.claude-code
-    pkgs.protonvpn-gui
-  ];
 
   gtk.enable = true;
   qt.enable = true;
@@ -112,7 +63,7 @@
   #
   #  /etc/profiles/per-user/sam/etc/profile.d/hm-session-vars.sh
   #
-  home.sessionVariables = { EDITOR = "nvim"; };
+  home.sessionVariables = { EDITOR = "emacs"; };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
