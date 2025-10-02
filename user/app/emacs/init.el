@@ -7,9 +7,6 @@
 (scroll-bar-mode -1)
 (eval-when-compile (require 'use-package))
 
-;; Add lisp/ to load-path
-(setq user-emacs-directory
-      (expand-file-name (or (getenv "JOYEMACS_HOME") "~/.config/joyemacs/")))
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
@@ -22,9 +19,10 @@
 (require 'core-leader)
 (require 'core-org)
 (require 'core-treesitter)
-(require 'eglot)        ;; <-- add this line
+(require 'eglot)  
 (require 'core-nix)
 (require 'core-python)
+(require 'core-terminal)
 ;; config I don't know where to put
 (recentf-mode 1)
 (setq history-length 25)

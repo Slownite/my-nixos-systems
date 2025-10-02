@@ -13,7 +13,7 @@
 
     htop
     nvtopPackages.full
-    nix-indx
+    nix-index
     zip
     unzip
     fabric-ai
