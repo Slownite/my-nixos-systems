@@ -7,9 +7,12 @@ let
   joyEmacs = epkgs.emacsWithPackages (_:
     with epkgs; [
       use-package
+      # completion
+      corfu
       vertico
       orderless
       marginalia
+     ############
       consult
       embark
       embark-consult
@@ -30,7 +33,6 @@ let
       nix-ts-mode
       vue-mode
       eglot
-      corfu
       org-roam
       org-modern
       vterm

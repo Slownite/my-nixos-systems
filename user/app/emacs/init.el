@@ -23,6 +23,7 @@
 (require 'core-nix)
 (require 'core-python)
 (require 'core-terminal)
+(require 'personnal-command)
 ;; config I don't know where to put
 (recentf-mode 1)
 (setq history-length 25)
