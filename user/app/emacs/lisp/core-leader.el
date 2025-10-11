@@ -32,6 +32,7 @@
     "t"  '(:ignore t :which-key "terminal")
     "te"  '(eshell :which-key "eshell")
     "tE"  '(project-eshell :which-key "project eshell")
+    "tv" '(multi-vterm :which-key "vterm")
     ))
 
 (provide 'core-leader)
