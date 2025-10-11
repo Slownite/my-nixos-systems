@@ -13,3 +13,4 @@
                0)
             (load-file "~/my-nixos-systems/user/app/emacs/init.el")
           (display-buffer buf))))))
+(provide 'personnal-command)
