@@ -33,6 +33,11 @@
       gp = "git push";
     };
 
+    profileExtra = ''
+        if [ -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]; then
+    . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+  fi
+    ''
     initExtra = ''
       # vi keybindings
       bindkey -v
@@ -41,6 +46,9 @@
       export EDITOR=nvim
       export VISUAL=$EDITOR
       export PAGER=less
+        if [ -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]; then
+            . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+        fi
     '';
   };
 
@@ -54,4 +62,5 @@
     enable = true;
     enableZshIntegration = true;
   };
+  
 }
