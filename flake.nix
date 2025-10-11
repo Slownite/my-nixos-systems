@@ -24,6 +24,11 @@
         inherit system;
         config.allowUnfree = true;
       };
+      darwinSystem = "x86_64-darwin";
+    darwinPkgs = import nixpkgs {
+      system = darwinSystem;
+      config.allowUnfree = true; # ← enable unfree packages here
+    };
     in {
       nixosConfigurations = {
         homeStation = nixpkgs.lib.nixosSystem {
@@ -47,6 +52,14 @@
             ./hosts/home_station/home.nix
           ];
         };
+      mac = home-manager.lib.homeManagerConfiguration {
+      pkgs = darwinPkgs;
+      extraSpecialArgs = { inherit base16-schemes; };
+      modules = [
+        stylix.homeModules.stylix
+        ./hosts/macbook/home.nix
+      ];
+    };
       };
     };
 }
