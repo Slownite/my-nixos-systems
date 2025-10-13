@@ -44,6 +44,11 @@
   (when (boundp 'ns-command-modifier)      (setq ns-command-modifier 'super))
   (when (boundp 'mac-command-modifier)     (setq mac-command-modifier 'super)))
 ;; ------------------------------------
+;; ------one line plugin---------------
+(use-package direnv
+ :config
+ (direnv-mode))
+;; ------------------------------------
 (provide 'init)
 ;;; init.el ends here
 

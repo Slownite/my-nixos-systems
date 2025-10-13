@@ -37,6 +37,7 @@ let
       org-modern
       vterm
       multi-vterm
+      direnv
     ]);
   packages = with pkgs; [
 
