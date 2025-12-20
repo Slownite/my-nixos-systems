@@ -22,6 +22,8 @@
 (require 'eglot)  
 (require 'core-nix)
 (require 'core-python)
+(require 'core-js)
+(require 'core-vue)
 (require 'core-terminal)
 (require 'personnal-command)
 ;; config I don't know where to put

@@ -19,6 +19,7 @@ let
       which-key
       evil
       evil-collection
+      evil-commentary
       general
       hl-todo
       rainbow-delimiters
