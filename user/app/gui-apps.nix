@@ -17,8 +17,7 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-    pkgs.bookworm
-    pkgs.floorp
+    pkgs.floorp-bin
     pkgs.keepassxc
     pkgs.pika-backup
     pkgs.discord
@@ -29,7 +28,7 @@
     pkgs.brave
     pkgs.localsend
     pkgs.vscode-fhs
-    pkgs.onlyoffice-bin_latest
+    pkgs.onlyoffice-desktopeditors
     pkgs.obsidian
     pkgs.networkmanagerapplet
     pkgs.zotero
