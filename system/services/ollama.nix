@@ -6,8 +6,8 @@
     enable = true;
     acceleration = "cuda";
   };
-  services.open-webui = {
-    enable = true;
-    package = pkgs.open-webui;
-  };
+ # services.open-webui = {
+ #  enable = true;
+ #  package = pkgs.open-webui;
+ #};
 }

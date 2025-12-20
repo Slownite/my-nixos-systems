@@ -10,7 +10,7 @@
 	};
             # Ensure necessary firmware is included
             hardware.firmware = [
-              pkgs.firmwareLinuxNonfree
+              pkgs.linux-firmware
             ];
 
             boot.extraModulePackages = [
