@@ -48,6 +48,7 @@
 (global-display-line-numbers-mode 1)
 (global-hl-line-mode 1)
 (pixel-scroll-precision-mode 1)
-
+;; FONTS
+(set-face-attribute 'default nil :family "JetBrainsMono Nerd Font" :height 130)
 (provide 'core-ui)
 ;;; core-ui.el ends here

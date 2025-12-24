@@ -58,7 +58,16 @@ let
     git
   ];
 in {
-  home.packages = with pkgs; [ joyEmacs ] ++ packages;
+  fonts.fontconfig.enable = true;
+  home.packages = with pkgs; [
+    joyEmacs
+    emacs-all-the-icons-fonts
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.iosevka
+    noto-fonts
+    noto-fonts-color-emoji
+    noto-fonts-cjk-sans
+  ] ++ packages;
   home.file = {
     "./emacs" = {
       source = ./emacs;
