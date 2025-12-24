@@ -50,5 +50,10 @@
 (pixel-scroll-precision-mode 1)
 ;; FONTS
 (set-face-attribute 'default nil :family "JetBrainsMono Nerd Font" :height 130)
+;; UI minimal
+(when (fboundp 'tool-bar-mode)  (tool-bar-mode -1))
+(when (fboundp 'menu-bar-mode)  (menu-bar-mode -1))
+(when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+
 (provide 'core-ui)
 ;;; core-ui.el ends here
