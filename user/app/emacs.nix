@@ -39,7 +39,14 @@ let
       vterm
       multi-vterm
       direnv
+      cape
+      consult-eglot
+      gcmh
+      no-littering
+      helpful
+      avy
     ]);
+
   packages = with pkgs; [
 
     nil
@@ -56,17 +63,21 @@ let
     ripgrep
     fd
     git
-  ];
-in {
-  fonts.fontconfig.enable = true;
-  home.packages = with pkgs; [
-    joyEmacs
+    direnv
+    alejandra
+    #FONTS
     emacs-all-the-icons-fonts
     nerd-fonts.jetbrains-mono
     nerd-fonts.iosevka
     noto-fonts
     noto-fonts-color-emoji
     noto-fonts-cjk-sans
+  ];
+in {
+  fonts.fontconfig.enable = true;
+  home.packages = with pkgs; [
+    joyEmacs
+
   ] ++ packages;
   home.file = {
     "./emacs" = {

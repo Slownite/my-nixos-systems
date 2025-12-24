@@ -1,56 +1,39 @@
 ;;; init.el --- JoyEmacs entrypoint -*- lexical-binding: t; -*-
 
-;; Basic hygiene
-(setq use-package-always-ensure nil) ;; Nix provides packages
-(menu-bar-mode -1)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
-(eval-when-compile (require 'use-package))
+;; Nix owns packages (no ELPA/MELPA installs)
+(setq package-enable-at-startup nil)
+(setq use-package-always-ensure nil)
+(setq use-package-ensure-function 'ignore)
 
+;; Startup perf
+(setq gc-cons-threshold (* 128 1024 1024))
+(add-hook 'emacs-startup-hook
+          (lambda () (setq gc-cons-threshold (* 16 1024 1024))))
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
-;; Load modules
-(require 'core-ui)
-(require 'core-evil)
-(require 'core-completion)
-(require 'core-git)
-(require 'core-project)
-(require 'core-leader)
-(require 'core-org)
+;; Load modules (order matters a bit)
+(require 'core-core)
 (require 'core-treesitter)
-(require 'eglot)  
+(require 'core-ui)
+(require 'core-completion)
+(require 'core-evil)
+(require 'core-project)
+(require 'core-git)
+(require 'core-terminal)
 (require 'core-nix)
-(require 'core-python)
+(require 'core-org)
+
+;; Language modules (lightweight, only language specifics)
 (require 'core-js)
 (require 'core-vue)
-(require 'core-terminal)
-(require 'personnal-command)
-;; config I don't know where to put
-(recentf-mode 1)
-(setq history-length 25)
-(savehist-mode 1)
-(save-place-mode 1)
-(setq custom-file (locate-user-emacs-file "custom-vars.el"))
-(load custom-file 'noerror 'nomessage)
-(setq use-dialog-box nil)
-(global-auto-revert-mode 1)
-(setq global-auto-revert-non-file-buffers t)
-;; ---------------------------------
-;; ------macbook config specific------
-(when (and (eq system-type 'darwin) window-system)
-  (when (boundp 'ns-option-modifier)       (setq ns-option-modifier 'meta
-                                                 ns-right-option-modifier nil))
-  (when (boundp 'mac-option-modifier)      (setq mac-option-modifier 'meta
-                                                 mac-right-option-modifier nil))
-  (when (boundp 'ns-command-modifier)      (setq ns-command-modifier 'super))
-  (when (boundp 'mac-command-modifier)     (setq mac-command-modifier 'super)))
-;; ------------------------------------
-;; ------one line plugin---------------
-(use-package direnv
- :config
- (direnv-mode))
-;; ------------------------------------
+(require 'core-python)
+
+;; LSP (centralized)
+(require 'core-lsp)
+
+;; Leader keys last (it binds stuff from other modules)
+(require 'core-leader)
+
 (provide 'init)
 ;;; init.el ends here
-
