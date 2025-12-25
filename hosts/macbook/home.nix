@@ -76,10 +76,6 @@
   #
   #  /etc/profiles/per-user/sam/etc/profile.d/hm-session-vars.sh
   #
-  home.sessionVariables = {
-     EDITOR = "emacs";
-  };
-
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }

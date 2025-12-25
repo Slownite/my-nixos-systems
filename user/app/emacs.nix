@@ -1,7 +1,15 @@
 { config, lib, pkgs, ... }:
 
 let
-  epkgs = pkgs.emacsPackagesFor pkgs.emacs;
+  # Pick the base Emacs build depending on OS:
+  # - macOS: "normal emacs"
+  # - Linux: GTK emacs
+  emacsPkg =
+    if pkgs.stdenv.isDarwin
+    then pkgs.emacs
+    else pkgs.emacs-gtk;
+
+  epkgs = pkgs.emacsPackagesFor emacsPkg;
 
   # ---- Emacs with your packages ----
   joyEmacs = epkgs.emacsWithPackages (_:
@@ -12,7 +20,6 @@ let
       vertico
       orderless
       marginalia
-     ############
       consult
       embark
       embark-consult
@@ -48,24 +55,23 @@ let
     ]);
 
   packages = with pkgs; [
-
     nil
-    #python
-    basedpyright # or pyright
+    # python
+    basedpyright
     ruff
     black
-    #js
+    # js
     vue-language-server
     biome
     typescript-language-server
-    #cpp
+    # cpp
     llvmPackages_21.clang-tools
     ripgrep
     fd
     git
     direnv
     alejandra
-    #FONTS
+    # fonts
     emacs-all-the-icons-fonts
     nerd-fonts.jetbrains-mono
     nerd-fonts.iosevka
@@ -75,10 +81,31 @@ let
   ];
 in {
   fonts.fontconfig.enable = true;
-  home.packages = with pkgs; [
-    joyEmacs
 
-  ] ++ packages;
+  # --- Emacs daemon + emacsclient (works on macOS via launchd, Linux via systemd user) ---
+  services.emacs = {
+    enable = true;
+    package = joyEmacs;
+    client.enable = true;
+  };
+
+  # Make `emacs` behave like `emacsclient` (both macOS + Linux)
+  # -c: create a GUI frame
+  # -a emacs: if daemon isn't running, start fallback emacs
+  home.shellAliases = {
+    emacs = "emacsclient -c -a emacs";
+    e = "emacsclient -c -a emacs";
+    et = "emacsclient -t -a emacs";
+  };
+
+  # For git/system tools/editor integration (also helps macOS GUI apps)
+  home.sessionVariables = {
+    EDITOR = "emacsclient -a emacs";
+    VISUAL = "emacsclient -c -a emacs";
+  };
+
+  home.packages = [ joyEmacs ] ++ packages;
+
   home.file = {
     "./emacs" = {
       source = ./emacs;
@@ -86,6 +113,4 @@ in {
       recursive = true;
     };
   };
-
 }
-

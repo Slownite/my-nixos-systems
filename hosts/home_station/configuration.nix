@@ -15,7 +15,6 @@
     ../../system/wm/i3.nix
     ../../system/hardware/printer.nix
     ../../system/hardware/audio.nix
-    ../../system/services/emacs.nix
     ../../system/services/container.nix
     ../../system/services/ollama.nix
     ../../system/hardware/networking.nix

@@ -42,5 +42,11 @@
   (global-set-key (kbd "C-h k") #'helpful-key)
   (global-set-key (kbd "C-h x") #'helpful-command))
 
+(defun my/reload-config ()
+  "Reload init.el (and the rest of your config)."
+  (interactive)
+  (load-file (expand-file-name "init.el" user-emacs-directory))
+  (message "Reloaded Emacs config."))
+
 (provide 'core-core)
 ;;; core-core.el ends here
