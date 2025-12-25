@@ -66,6 +66,14 @@
             ./hosts/macbook/home.nix
           ];
         };
+	wsl = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = { inherit base16-schemes; };
+          modules = [
+            stylix.homeModules.stylix
+            ./hosts/wsl/home.nix
+          ];
+        };
       };
     };
 }
