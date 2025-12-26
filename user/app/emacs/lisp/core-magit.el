@@ -45,3 +45,4 @@
         ;; File-level discard
         ("x" . magit-discard)))
  
+(provide 'core-magit)

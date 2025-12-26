@@ -37,7 +37,7 @@
 
 ;; Add real completion sources
 (use-package cape
-  :init
+  :config
   ;; Files / paths
   (add-to-list 'completion-at-point-functions #'cape-file)
   ;; Buffer words
