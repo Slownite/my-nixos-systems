@@ -23,7 +23,7 @@
 (require 'core-terminal)
 (require 'core-nix)
 (require 'core-org)
-
+(require 'core-magit)
 ;; Language modules (lightweight, only language specifics)
 (require 'core-js)
 (require 'core-vue)
