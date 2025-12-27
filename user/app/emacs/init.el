@@ -24,6 +24,8 @@
 (require 'core-nix)
 (require 'core-org)
 (require 'core-magit)
+(require 'claude-vterm)
+(require 'personnal-command)
 ;; Language modules (lightweight, only language specifics)
 (require 'core-js)
 (require 'core-vue)

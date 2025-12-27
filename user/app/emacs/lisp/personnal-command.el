@@ -67,4 +67,16 @@
 
         (message "Started home-manager switch... (use `personnal-command/abort-home-manager` to cancel)")))))
 
+
+(defun my/reload-config ()
+  "Reload init.el (and the rest of your config)."
+  (interactive)
+  (load-file (expand-file-name "init.el" user-emacs-directory))
+  (message "Reloaded Emacs config."))
+
+(defun open-my-config ()
+  "open init.el"
+  (interactive)
+  (find-file user-init-file))
+
 (provide 'personnal-command)
