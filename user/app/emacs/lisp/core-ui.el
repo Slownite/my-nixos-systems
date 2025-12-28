@@ -3,7 +3,7 @@
 (use-package doom-themes
   :demand t
   :config
-  (load-theme 'doom-nord t)
+  (load-theme 'doom-one t)
 
   ;; Explicitly load extensions when autoloads aren’t available
   (ignore-errors (require 'doom-themes-ext-visual-bell))
