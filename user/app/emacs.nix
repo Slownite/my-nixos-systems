@@ -1,19 +1,21 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   # Pick the base Emacs build depending on OS:
   # - macOS: "normal emacs"
   # - Linux: GTK emacs
-  emacsPkg =
-    if pkgs.stdenv.isDarwin
-    then pkgs.emacs
-    else pkgs.emacs-gtk;
+  emacsPkg = if pkgs.stdenv.isDarwin then pkgs.emacs else pkgs.emacs-gtk;
 
   epkgs = pkgs.emacsPackagesFor emacsPkg;
 
   # ---- Emacs with your packages ----
-  joyEmacs = epkgs.emacsWithPackages (_:
-    with epkgs; [
+  joyEmacs = epkgs.emacsWithPackages (
+    _: with epkgs; [
       # completion
       corfu
       vertico
@@ -51,12 +53,14 @@ let
       no-littering
       helpful
       avy
-    ]);
+    ]
+  );
 
   packages = with pkgs; [
     nil
     # python
     basedpyright
+    pyright
     ruff
     black
     # js
@@ -78,7 +82,8 @@ let
     noto-fonts-color-emoji
     noto-fonts-cjk-sans
   ];
-in {
+in
+{
   fonts.fontconfig.enable = true;
 
   # --- Emacs daemon + emacsclient (works on macOS via launchd, Linux via systemd user) ---
