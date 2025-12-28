@@ -14,7 +14,6 @@ let
   # ---- Emacs with your packages ----
   joyEmacs = epkgs.emacsWithPackages (_:
     with epkgs; [
-      use-package
       # completion
       corfu
       vertico
