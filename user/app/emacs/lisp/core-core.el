@@ -42,5 +42,14 @@
   (global-set-key (kbd "C-h k") #'helpful-key)
   (global-set-key (kbd "C-h x") #'helpful-command))
 
+;; mac specific keyboard modification
+(when (eq system-type 'darwin)
+  (setq mac-option-modifier 'meta
+        mac-right-option-modifier 'none))
+
+;; which key activation
+(require 'which-key)
+(which-key-mode)
+
 (provide 'core-core)
 ;;; core-core.el ends here

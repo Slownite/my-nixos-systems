@@ -26,6 +26,7 @@
 (require 'core-magit)
 (require 'claude-vterm)
 (require 'personnal-command)
+(require 'core-tmux)
 ;; Language modules (lightweight, only language specifics)
 (require 'core-js)
 (require 'core-vue)
