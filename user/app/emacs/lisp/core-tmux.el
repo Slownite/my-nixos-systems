@@ -38,6 +38,7 @@
 	  (delete-window))))
       (message "not a vterm")))
 
+
 (defvar tmux-prefix-map
   (let ((map (make-sparse-keymap)))
     (define-key map (kbd "l") #'my/tmux-split-vertical)
@@ -45,6 +46,11 @@
     (define-key map (kbd "k") #'my/tmux-pane-kill)
     (define-key map (kbd "c") #'my/tmux-pane-close)
     (define-key map (kbd "a") #'my/tmux-pane-kill-close)
+    (define-key map (kbd "t") #'tab-bar-new-tab)
+    (define-key map (kbd "n") #'tab-bar-switch-to-next-tab)
+    (define-key map (kbd "p") #'tab-bar-switch-to-prev-tab)
+    (define-key map (kbd "d") #'tab-bar-close-tab)
+    (define-key map (kbd ",") #'tab-bar-rename-tab)
     map))
 
 (define-minor-mode tmux-mode

@@ -19,6 +19,17 @@
       kept-old-versions 2
       auto-save-default t
       create-lockfiles nil)
+;; Ensure auto-save and backup directories exist
+(let ((auto-save-dir (expand-file-name "auto-save/" user-emacs-directory))
+      (backup-dir    (expand-file-name "backup/" user-emacs-directory)))
+  (dolist (dir (list auto-save-dir backup-dir))
+    (unless (file-directory-p dir)
+      (make-directory dir t)))
+
+  (setq auto-save-file-name-transforms
+        `((".*" ,auto-save-dir t))
+        backup-directory-alist
+        `((".*" . ,backup-dir))))
 
 ;; Clean filesystem
 (use-package no-littering
@@ -50,6 +61,9 @@
 ;; which key activation
 (require 'which-key)
 (which-key-mode)
+
+;; activate tab-bar mode
+(tab-bar-mode 1)
 
 (provide 'core-core)
 ;;; core-core.el ends here
