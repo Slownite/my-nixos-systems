@@ -1,4 +1,10 @@
-{ config, lib, pkgs, home-manager, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  home-manager,
+  ...
+}:
 
 {
   imports = [
@@ -17,15 +23,12 @@
     gh
     htop
     zoxide
-    nvtopPackages.full
     nix-index
     zip
     unzip
-    fabric-ai
-    dvc
     ffmpeg
     nixos-generators
     claude-code
-    
+
   ];
 }
