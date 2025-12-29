@@ -7,7 +7,6 @@
         (typescript-mode . typescript-ts-mode)
         (json-mode . json-ts-mode)
         (css-mode . css-ts-mode)))
-
 ;; If you use nix-ts-mode (external), keep it as-is
 ;; It doesn't follow the *-ts-mode naming scheme, so no remap needed.
 

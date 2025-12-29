@@ -65,5 +65,15 @@
 ;; activate tab-bar mode
 (tab-bar-mode 1)
 
+;; core-env
+(dolist (p '("/run/current-system/sw/bin"
+             "/etc/profiles/per-user/%s/bin"
+             "~/.nix-profile/bin"))
+  (let ((path (format (expand-file-name p) (user-login-name))))
+    (when (file-directory-p path)
+      (add-to-list 'exec-path path)
+      (setenv "PATH" (concat path ":" (getenv "PATH"))))))
+
+
 (provide 'core-core)
 ;;; core-core.el ends here

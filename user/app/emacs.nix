@@ -41,6 +41,8 @@ let
       magit
       nix-ts-mode
       vue-mode
+      zig-ts-mode
+      zig-mode
       eglot
       org-roam
       org-modern
@@ -58,6 +60,7 @@ let
 
   packages = with pkgs; [
     nil
+    alejandra
     # python
     basedpyright
     pyright
@@ -69,11 +72,13 @@ let
     typescript-language-server
     # cpp
     llvmPackages_21.clang-tools
+    # zig
+    zls
+    # other package
     ripgrep
     fd
     git
     direnv
-    alejandra
     # fonts
     emacs-all-the-icons-fonts
     nerd-fonts.jetbrains-mono

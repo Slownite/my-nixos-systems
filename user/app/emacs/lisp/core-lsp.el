@@ -12,7 +12,8 @@
          (typescript-mode     . eglot-ensure)
          (vue-mode            . eglot-ensure)
          (c-mode              . eglot-ensure)
-         (c++-mode            . eglot-ensure))
+         (c++-mode            . eglot-ensure)
+	 (zig-mode         . eglot-ensure))
   :config
   ;; Prefer explicit server commands (Nix provides binaries)
   (add-to-list 'eglot-server-programs
@@ -30,7 +31,8 @@
 
   (add-to-list 'eglot-server-programs
                '(vue-mode . ("vue-language-server" "--stdio")))
-
+  (add-to-list 'eglot-server-programs
+	       '(zig-ts-mode . ("zls")))
   ;; save hook
   (defun joy/nix-format-buffer ()
   (when (derived-mode-p 'nix-mode 'nix-ts-mode)
