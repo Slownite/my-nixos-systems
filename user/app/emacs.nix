@@ -3,59 +3,60 @@
   lib,
   pkgs,
   ...
-}:
-
-let
+}: let
   # Pick the base Emacs build depending on OS:
   # - macOS: "normal emacs"
   # - Linux: GTK emacs
-  emacsPkg = if pkgs.stdenv.isDarwin then pkgs.emacs else pkgs.emacs-gtk;
+  emacsPkg =
+    if pkgs.stdenv.isDarwin
+    then pkgs.emacs
+    else pkgs.emacs-gtk;
 
   epkgs = pkgs.emacsPackagesFor emacsPkg;
 
   # ---- Emacs with your packages ----
   joyEmacs = epkgs.emacsWithPackages (
-    _: with epkgs; [
-      # completion
-      corfu
-      vertico
-      orderless
-      marginalia
-      consult
-      embark
-      embark-consult
-      which-key
-      evil
-      evil-collection
-      evil-commentary
-      general
-      hl-todo
-      rainbow-delimiters
-      doom-themes
-      doom-modeline
-      all-the-icons
-      dashboard
-      treemacs
-      treemacs-evil
-      centaur-tabs
-      magit
-      nix-ts-mode
-      vue-mode
-      zig-ts-mode
-      zig-mode
-      eglot
-      org-roam
-      org-modern
-      vterm
-      multi-vterm
-      direnv
-      cape
-      consult-eglot
-      gcmh
-      no-littering
-      helpful
-      avy
-    ]
+    _:
+      with epkgs; [
+        # completion
+        corfu
+        vertico
+        orderless
+        marginalia
+        consult
+        embark
+        embark-consult
+        which-key
+        evil
+        evil-collection
+        evil-commentary
+        general
+        hl-todo
+        rainbow-delimiters
+        doom-themes
+        doom-modeline
+        all-the-icons
+        dashboard
+        treemacs
+        treemacs-evil
+        centaur-tabs
+        magit
+        nix-ts-mode
+        vue-mode
+        zig-ts-mode
+        zig-mode
+        eglot
+        org-modern
+        vterm
+        multi-vterm
+        direnv
+        cape
+        consult-eglot
+        gcmh
+        no-littering
+        helpful
+        avy
+      ]
   );
 
   packages = with pkgs; [
@@ -87,8 +88,7 @@ let
     noto-fonts-color-emoji
     noto-fonts-cjk-sans
   ];
-in
-{
+in {
   fonts.fontconfig.enable = true;
 
   # --- Emacs daemon + emacsclient (works on macOS via launchd, Linux via systemd user) ---
@@ -113,7 +113,7 @@ in
     VISUAL = "emacsclient -c -a emacs";
   };
 
-  home.packages = [ joyEmacs ] ++ packages;
+  home.packages = [joyEmacs] ++ packages;
 
   home.file = {
     "./emacs" = {

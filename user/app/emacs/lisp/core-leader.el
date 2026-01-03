@@ -126,24 +126,6 @@
     "oi" '(org-insert-link :which-key "insert link")
     "of" '(org-open-at-point :which-key "open link"))
 
-  ;; =====================
-  ;; Org-roam
-  ;; =====================
-  (my/leader
-    "or" '(:ignore t :which-key "org-roam")
-    "orf" '(org-roam-node-find :which-key "find node")
-    "ori" '(org-roam-node-insert :which-key "insert node"))
-
-  ;; =====================
-  ;; Org-roam Dailies (Daily notes)
-  ;; =====================
-  (my/leader
-    "od" '(:ignore t :which-key "daily notes")
-    "odd" '(org-roam-dailies-goto-today :which-key "today")
-    "ody" '(org-roam-dailies-goto-yesterday :which-key "yesterday")
-    "odt" '(org-roam-dailies-goto-tomorrow :which-key "tomorrow")
-    "odc" '(org-roam-dailies-capture-today :which-key "capture today")))
-
 ;; Doom-like binding: SPC h r r (help -> reload -> reload)
 (my/leader
   "h"  '(:ignore t :which-key "help")
