@@ -12,7 +12,6 @@ It supports:
 - macOS and non-NixOS Linux via home-manager (run through `nix run`)
 - Dynamic discovery of targets from flake outputs
 """
-
 from __future__ import annotations
 
 import argparse
@@ -24,14 +23,12 @@ import subprocess
 import sys
 from pathlib import Path
 
-
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 
 def run(cmd: list[str], *, cwd: Path | None = None) -> None:
     """
     Run a command and raise on failure.
-
     The command is echoed before execution for transparency.
     """
     print("+", " ".join(cmd))
@@ -41,7 +38,6 @@ def run(cmd: list[str], *, cwd: Path | None = None) -> None:
 def capture(cmd: list[str], *, cwd: Path | None = None) -> str:
     """
     Run a command and return its stdout as text.
-
     The command is echoed before execution.
     """
     print("+", " ".join(cmd))
@@ -70,7 +66,6 @@ def is_wsl() -> bool:
 def bash_login(cmd: str) -> list[str]:
     """
     Wrap a command to be executed in a login shell.
-
     This ensures that the Nix profile is sourced, which is required
     immediately after installing Nix.
     """
@@ -92,16 +87,14 @@ def ensure_nix() -> None:
     print(f"Nix not found — bootstrapping on {system}")
 
     if system == "Darwin":
-        run([
-            "bash", "-lc",
+        run(bash_login(
             "curl --proto '=https' --tlsv1.2 -sSf -L "
             "https://install.determinate.systems/nix | sh -s -- install"
-        ])
+        ))
     elif system == "Linux":
-        run([
-            "bash", "-lc",
+        run(bash_login(
             "curl -L https://nixos.org/nix/install | sh -s -- --daemon"
-        ])
+        ))
     else:
         sys.exit(f"Unsupported system for Nix bootstrap: {system}")
 
@@ -111,8 +104,8 @@ def nix_eval_attrnames(flake_ref: str, attr: str, *, cwd: Path) -> list[str]:
     Return the attribute names of a flake output attrset.
 
     Example:
-        nix eval --json .#nixosConfigurations \
-          --apply 'x: builtins.attrNames x'
+      nix eval --json .#nixosConfigurations \\
+        --apply 'x: builtins.attrNames x'
     """
     cmd = (
         f"nix eval --json {flake_ref}#{attr} "
@@ -154,7 +147,7 @@ def default_mode_and_target(
     Preference order:
     - NixOS -> nixos + first matching host
     - macOS -> home + 'mac' if present
-    - WSL   -> home + 'wsl' if present
+    - WSL -> home + 'wsl' if present
     - Linux -> home + 'sam' if present
     """
     if have("nixos-rebuild") and nixos_hosts:
@@ -167,31 +160,37 @@ def default_mode_and_target(
     if system == "Darwin":
         if "mac" in home_targets:
             return "home", "mac"
-        return "home", home_targets[0]
+        if home_targets:
+            return "home", home_targets[0]
 
     if system == "Linux" and is_wsl():
         if "wsl" in home_targets:
             return "home", "wsl"
-        return "home", home_targets[0]
+        if home_targets:
+            return "home", home_targets[0]
 
     if "sam" in home_targets:
         return "home", "sam"
+    
+    if home_targets:
+        return "home", home_targets[0]
+    
+    sys.exit("No valid targets found in flake")
 
-    return "home", home_targets[0]
 
-
-def apply_home(target: str) -> None:
+def apply_home(target: str, repo_root: Path) -> None:
     """
     Apply a Home Manager configuration using the activationPackage from this flake.
 
-    This avoids pinning a separate Home Manager version in the script; the version
-    is taken from the flake inputs.
+    This avoids pinning a separate Home Manager version in the script;
+    the version is taken from the flake inputs.
     """
     ensure_nix()
 
     # Build the activation package and get its store path
     expr = f"nix build --print-out-paths .#homeConfigurations.{target}.activationPackage"
-    out = capture(bash_login(expr), cwd=REPO_ROOT).strip()
+    out = capture(bash_login(expr), cwd=repo_root).strip()
+
     if not out:
         raise RuntimeError("nix build returned no output path for activationPackage")
 
@@ -200,15 +199,15 @@ def apply_home(target: str) -> None:
     activate = f"{activation_path}/activate"
 
     # Run activation
-    run(bash_login(activate), cwd=REPO_ROOT)
+    run(bash_login(activate), cwd=repo_root)
 
 
-def apply_nixos(host: str) -> None:
+def apply_nixos(host: str, repo_root: Path) -> None:
     """
     Apply a NixOS system configuration using nixos-rebuild.
     """
     cmd = f"sudo nixos-rebuild switch --flake .#{host}"
-    run(bash_login(cmd), cwd=REPO_ROOT)
+    run(bash_login(cmd), cwd=repo_root)
 
 
 def main() -> None:
@@ -233,22 +232,21 @@ def main() -> None:
     sub = parser.add_subparsers(dest="mode")
 
     nixos = sub.add_parser("nixos", help="Apply a NixOS configuration")
-    nixos.add_argument("host", nargs="?", help="nixosConfigurations.<host>")
+    nixos.add_argument("host", nargs="?", help="nixosConfigurations.")
 
     home = sub.add_parser("home", help="Apply a Home Manager configuration")
-    home.add_argument("target", nargs="?", help="homeConfigurations.<name>")
+    home.add_argument("target", nargs="?", help="homeConfigurations.")
 
     sub.add_parser("auto", help="Auto-select configuration (default)")
 
     args = parser.parse_args()
 
-    global REPO_ROOT
-    REPO_ROOT = args.repo.resolve()
+    repo_root = args.repo.resolve()
 
     ensure_nix()
 
     try:
-        nixos_hosts, home_targets = discover_targets(cwd=REPO_ROOT)
+        nixos_hosts, home_targets = discover_targets(cwd=repo_root)
     except Exception as exc:
         print(f"Warning: failed to discover targets: {exc}", file=sys.stderr)
         nixos_hosts, home_targets = [], []
@@ -278,13 +276,14 @@ def main() -> None:
 
     if mode == "nixos" and nixos_hosts and target not in nixos_hosts:
         sys.exit(f"Unknown NixOS host '{target}'. Choices: {', '.join(nixos_hosts)}")
+
     if mode == "home" and home_targets and target not in home_targets:
         sys.exit(f"Unknown home target '{target}'. Choices: {', '.join(home_targets)}")
 
     if mode == "nixos":
-        apply_nixos(target)
+        apply_nixos(target, repo_root)
     else:
-        apply_home(target)
+        apply_home(target, repo_root)
 
 
 if __name__ == "__main__":
