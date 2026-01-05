@@ -2,6 +2,7 @@
 
 (use-package general
   :config
+  :after evil
   ;; Doom-style leader
   (general-create-definer my/leader
     :states '(normal visual motion emacs)
@@ -130,6 +131,6 @@
 (my/leader
   "h"  '(:ignore t :which-key "help")
   "hr" '(:ignore t :which-key "reload")
-  "hrr" '(my/reload-config :which-key "reload config"))
+  "hrr" '(my/reload-config :which-key "reload config")))
 (provide 'core-leader)
 ;;; core-leader.el ends here
