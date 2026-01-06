@@ -1,8 +1,8 @@
 ;;; core-leader.el --- Doom-like leader key -*- lexical-binding: t; -*-
 
 (use-package general
-  :config
   :after evil
+  :config
   ;; Doom-style leader
   (general-create-definer my/leader
     :states '(normal visual motion emacs)
