@@ -2,44 +2,49 @@
 
 (use-package eglot
   :commands (eglot eglot-ensure)
-  :hook ((python-ts-mode      . eglot-ensure)
-         (python-mode         . eglot-ensure)
-         (nix-ts-mode         . eglot-ensure)
+  :hook ((python-mode         . eglot-ensure)
          (nix-mode            . eglot-ensure)
-         (js-ts-mode          . eglot-ensure)
          (js-mode             . eglot-ensure)
-         (typescript-ts-mode  . eglot-ensure)
          (typescript-mode     . eglot-ensure)
          (vue-mode            . eglot-ensure)
          (c-mode              . eglot-ensure)
          (c++-mode            . eglot-ensure)
-	 (zig-mode         . eglot-ensure))
+         (zig-mode            . eglot-ensure)
+         (haskell-mode        . eglot-ensure))
   :config
   ;; Prefer explicit server commands (Nix provides binaries)
   (add-to-list 'eglot-server-programs
-               `((python-ts-mode python-mode)
+               `(python-mode
                  . ,(eglot-alternatives
                      '("basedpyright-langserver" "--stdio")
                      '("pyright-langserver" "--stdio"))))
 
   (add-to-list 'eglot-server-programs
-               '((nix-ts-mode nix-mode) . ("nil" "--stdio")))
+               '(nix-mode . ("nil")))
 
   (add-to-list 'eglot-server-programs
-               '((js-ts-mode js-mode typescript-ts-mode typescript-mode)
+               '((js-mode typescript-mode)
                  . ("typescript-language-server" "--stdio")))
 
   (add-to-list 'eglot-server-programs
                '(vue-mode . ("vue-language-server" "--stdio")))
+
   (add-to-list 'eglot-server-programs
-	       '(zig-ts-mode . ("zls")))
+               '((c-mode c++-mode) . ("clangd")))
+
+  (add-to-list 'eglot-server-programs
+               '(zig-mode . ("zls")))
+
+  (add-to-list 'eglot-server-programs
+               '(haskell-mode . ("haskell-language-server-wrapper" "--lsp")))
+
   ;; save hook
   (defun joy/nix-format-buffer ()
-  (when (derived-mode-p 'nix-mode 'nix-ts-mode)
-    (let ((cmd "alejandra --quiet"))
-      (shell-command-on-region (point-min) (point-max) cmd t t))))
+    (when (derived-mode-p 'nix-mode)
+      (let ((cmd "alejandra --quiet"))
+        (shell-command-on-region (point-min) (point-max) cmd t t))))
 
-(add-hook 'before-save-hook #'joy/nix-format-buffer)
+  (add-hook 'before-save-hook #'joy/nix-format-buffer)
 
   ;; Format on save only if server supports it
   (defun joy/eglot-format-on-save ()

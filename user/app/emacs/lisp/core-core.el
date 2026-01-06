@@ -74,6 +74,5 @@
       (add-to-list 'exec-path path)
       (setenv "PATH" (concat path ":" (getenv "PATH"))))))
 
-
 (provide 'core-core)
 ;;; core-core.el ends here

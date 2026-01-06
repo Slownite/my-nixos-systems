@@ -12,6 +12,9 @@
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
+;; Ensure Emacs can find Nix binaries
+(setenv "PATH" (concat (getenv "HOME") "/.nix-profile/bin:" (getenv "PATH")))
+(add-to-list 'exec-path (concat (getenv "HOME") "/.nix-profile/bin"))
 ;; Load modules (order matters a bit)
 (require 'core-core)
 (require 'core-treesitter)

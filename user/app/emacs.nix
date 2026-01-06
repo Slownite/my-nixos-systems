@@ -45,6 +45,8 @@
         vue-mode
         zig-ts-mode
         zig-mode
+        haskell-mode
+        haskell-ts-mode
         eglot
         org-modern
         vterm
@@ -75,7 +77,26 @@
     llvmPackages_21.clang-tools
     # zig
     zls
+    #haskell
+    haskell-language-server
+        (tree-sitter.withPlugins (p: [
+      p.tree-sitter-c
+      p.tree-sitter-cpp
+      p.tree-sitter-python
+      p.tree-sitter-javascript
+      p.tree-sitter-typescript
+      p.tree-sitter-tsx
+      p.tree-sitter-json
+      p.tree-sitter-css
+      p.tree-sitter-html
+      p.tree-sitter-nix
+      p.tree-sitter-zig
+      p.tree-sitter-bash
+      p.tree-sitter-yaml
+      p.tree-sitter-haskell
+    ]))
     # other package
+    tree-sitter
     ripgrep
     fd
     git
@@ -114,7 +135,6 @@ in {
   };
 
   home.packages = [joyEmacs] ++ packages;
-
   home.file = {
     "./emacs" = {
       source = ./emacs;
@@ -123,3 +143,4 @@ in {
     };
   };
 }
+
