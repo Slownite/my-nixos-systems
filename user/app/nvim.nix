@@ -6,11 +6,8 @@
     viAlias = true;
     vimAlias = true;
   };
-  home.file = {
-    "./nvim" = {
-      source = ./nvim;
-      target = ".config/nvim";
-     recursive = true;
-    };
+ xdg.configFile."nvim" = {
+    source = ./nvim;
+    recursive = true;
   };
 }
