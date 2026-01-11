@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ../../user/shell/sh.nix
     ../../user/app/emacs.nix
@@ -15,7 +17,7 @@
   home.username = "sam";
   home.homeDirectory = "/home/sam";
 
-  nixpkgs.config = { allowUnfree = true; };
+  nixpkgs.config = {allowUnfree = true;};
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -31,7 +33,10 @@
 
   gtk.enable = true;
   qt.enable = true;
-
+  home.packages = [
+    pkgs.zig
+    pkgs.uv
+  ];
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
