@@ -27,7 +27,7 @@
 (require 'core-nix)
 (require 'core-org)
 (require 'core-magit)
-(require 'claude-vterm)
+;;(require 'claude-vterm)
 (require 'personnal-command)
 (require 'core-tmux)
 ;; Language modules (lightweight, only language specifics)

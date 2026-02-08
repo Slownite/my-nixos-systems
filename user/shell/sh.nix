@@ -28,7 +28,7 @@
     unzip
     ffmpeg
     nixos-generators
-    claude-code
-
+    just
+    opencode
   ];
 }
