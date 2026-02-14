@@ -22,6 +22,8 @@
   ];
   nix.settings = {
 	experimental-features = [ "nix-command" "flakes" ];
+	trusted-users = [ "root" "sam" ];
+
 };
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
