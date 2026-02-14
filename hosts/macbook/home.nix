@@ -1,7 +1,8 @@
-{ config, pkgs, ... }:
-
 {
-
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ../../user/shell/sh.nix
     ../../user/app/emacs.nix
@@ -29,6 +30,8 @@
   home.packages = [
     pkgs.uv
     pkgs.zig
+    pkgs.stack
+    pkgs.ghc
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -65,3 +68,4 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
+
