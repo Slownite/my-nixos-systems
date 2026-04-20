@@ -36,8 +36,8 @@
   home.packages = [
     pkgs.zig
     pkgs.uv
+    pkgs.javaPackages.compiler.openjdk17
     pkgs.just
-    pkgs.devenv
   ];
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.

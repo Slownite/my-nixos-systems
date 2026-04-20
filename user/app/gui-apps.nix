@@ -1,4 +1,4 @@
-{config, pkgs, ...}:
+{config, pkgs, unstablePkgs, ...}:
 {
   
   home.packages = [
@@ -24,6 +24,7 @@
     pkgs.vlc
     pkgs.slack
     pkgs.vscodium
+    unstablePkgs.antigravity-fhs
     pkgs.spotify
     pkgs.brave
     pkgs.localsend
@@ -34,5 +35,6 @@
     pkgs.zotero
     pkgs.audacity
     pkgs.protonvpn-gui
+    pkgs.chromium
   ];
 }

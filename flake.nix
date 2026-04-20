@@ -5,7 +5,9 @@
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixos-25.11";
     };
-
+    unstable-nixpkgs = {
+      url = "github:NixOS/nixpkgs/nixos-unstable";
+    };
     base16-schemes = {
       url = "github:base16-project/base16-schemes";
       flake = false;
@@ -22,10 +24,14 @@
     };
   };
 
-  outputs = { self, nixpkgs, stylix, home-manager, base16-schemes, ... }:
+  outputs = { self, nixpkgs, stylix, home-manager, base16-schemes, unstable-nixpkgs, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
+      unstablePkgs = import unstable-nixpkgs {
         inherit system;
         config.allowUnfree = true;
       };
@@ -51,7 +57,9 @@
       homeConfigurations = {
         sam = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = { inherit base16-schemes; };
+          extraSpecialArgs = { inherit base16-schemes; 
+          inherit unstablePkgs;
+          };
           modules = [
             stylix.homeModules.stylix
             ./hosts/home_station/home.nix

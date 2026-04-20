@@ -51,13 +51,14 @@
         org-modern
         vterm
         multi-vterm
-        direnv
+	envrc
         cape
         consult-eglot
         gcmh
         no-littering
         helpful
         avy
+	just-mode
       ]
   );
 

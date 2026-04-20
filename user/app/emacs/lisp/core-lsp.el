@@ -10,7 +10,7 @@
          (c-mode              . eglot-ensure)
          (c++-mode            . eglot-ensure)
          (zig-mode            . eglot-ensure)
-         (haskell-mode        . eglot-ensure))
+	 (just-mode           . eglot-ensure))
   :config
   ;; Prefer explicit server commands (Nix provides binaries)
   (add-to-list 'eglot-server-programs
@@ -34,9 +34,6 @@
 
   (add-to-list 'eglot-server-programs
                '(zig-mode . ("zls")))
-
-  (add-to-list 'eglot-server-programs
-               '(haskell-mode . ("haskell-language-server-wrapper" "--lsp")))
 
   ;; save hook
   (defun joy/nix-format-buffer ()

@@ -28,6 +28,7 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.supportedFilesystems = [ "nfs" ];
 #boot.kernelParams = [ "acpi=strict" "nosmt" ];
 #boot.blacklistedKernelModules = [ "kvm" "kvm-intel" "kvm-amd" ];
  # fileSystems."/mnt/disk2" = {
@@ -85,6 +86,7 @@ programs.zsh.enable = true;        # recommended
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    nfs-utils
     wget
     base16-schemes
     wl-clipboard
@@ -103,9 +105,9 @@ programs.zsh.enable = true;        # recommended
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-
+  services.openssh.settings.PasswordAuthentication = true;
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ ];
+  networking.firewall.allowedTCPPorts = [ 22 ];
   networking.firewall.allowedUDPPorts = [ ];
   # Or disable the firewall altogether.
   networking.firewall.enable = true;
