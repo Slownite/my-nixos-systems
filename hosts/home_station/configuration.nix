@@ -31,11 +31,11 @@
   boot.supportedFilesystems = [ "nfs" ];
 #boot.kernelParams = [ "acpi=strict" "nosmt" ];
 #boot.blacklistedKernelModules = [ "kvm" "kvm-intel" "kvm-amd" ];
- # fileSystems."/mnt/disk2" = {
-   # device = "78fa6c7a-5827-4e27-a6dd-ef198d3a7f10"; # Mount by UUID
-    #fsType = "ext4"; # Filesystem type
-    #options = [ "defaults" ]; # Optional mount options
-  #};
+  fileSystems."/home/sam/nas" = {
+    device = "192.168.8.100:/mnt/external_data";
+    fsType = "nfs";
+    options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" ];
+  };
   networking.hostName = lib.mkForce "home_station"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
