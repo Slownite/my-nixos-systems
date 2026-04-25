@@ -1,8 +1,5 @@
-{pkgs,...}: 
+{pkgs, unstablePkgs, ...}: 
 
 {
-  # programs.claude_code = {
-  #   enable = true;
-  # };
-  
+  home.packages = [ unstablePkgs.claude-code ];
 }

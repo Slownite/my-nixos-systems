@@ -43,7 +43,7 @@
       bindkey -v
 
       # Basics
-      export EDITOR=nvim
+      export EDITOR=antigravity
       export VISUAL=$EDITOR
       export PAGER=less
         if [ -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]; then
