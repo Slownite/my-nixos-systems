@@ -30,5 +30,6 @@
     nixos-generators
     just
     opencode
+    nodejs
   ];
 }
