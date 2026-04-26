@@ -27,6 +27,7 @@
     zip
     unzip
     ffmpeg
+    sox
     nixos-generators
     just
     opencode
