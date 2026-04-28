@@ -43,7 +43,7 @@ in {
         "${cfg.config.modifier}+e" = "exec nautilus";
         "${cfg.config.modifier}+o" = "exec obsidian";
         "${cfg.config.modifier}+bracketright" = "exec flameshot gui";
-        "${cfg.config.modifier}+c" = "exec antigravity";
+        "${cfg.config.modifier}+c" = "exec emacsclient -c -a emacs";
         "${cfg.config.modifier}+Shift+x" =
           "exec i3lock -i ${../../theme/nord.png}";
 
