@@ -22,9 +22,15 @@
       url = "github:nix-community/home-manager?ref=release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    voxy = {
+      url = "github:Slownite/voxy-linux";
+    };
+    ralf = {
+    url = "github:Slownite/my_ralph_loop";
+    };
   };
 
-  outputs = { self, nixpkgs, stylix, home-manager, base16-schemes, unstable-nixpkgs, ... }:
+  outputs = { self, nixpkgs, stylix, home-manager, base16-schemes, unstable-nixpkgs, voxy, ralf, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -48,6 +54,8 @@
             inherit system stylix base16-schemes;
           };
           modules = [
+            voxy.nixosModules.voxy
+  
             home-manager.nixosModules.home-manager
             ./hosts/home_station/configuration.nix
           ];
@@ -59,6 +67,7 @@
           inherit pkgs;
           extraSpecialArgs = { inherit base16-schemes; 
           inherit unstablePkgs;
+          ralfPkgs = ralf.packages.x86_64-linux;
           };
           modules = [
             stylix.homeModules.stylix
@@ -68,8 +77,11 @@
 
         mac = home-manager.lib.homeManagerConfiguration {
           pkgs = darwinPkgs;
-          extraSpecialArgs = { inherit base16-schemes; };
+          extraSpecialArgs = { inherit base16-schemes; 
+            ralfPkgs = ralf.packages.x86_64-darwin;
+          };
           modules = [
+
             stylix.homeModules.stylix
             ./hosts/macbook/home.nix
           ];

@@ -2,7 +2,9 @@
   config,
   lib,
   pkgs,
+  unstablePkgs,
   home-manager,
+  ralfPkgs,
   ...
 }:
 
@@ -32,5 +34,9 @@
     just
     opencode
     nodejs
+    tree
+    unstablePkgs.gemini-cli
+    unstablePkgs.pnpm
+    ralfPkgs.default
   ];
 }

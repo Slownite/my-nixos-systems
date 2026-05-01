@@ -18,6 +18,7 @@
     ../../system/services/container.nix
     ../../system/services/ollama.nix
     ../../system/hardware/networking.nix
+    ../../system/services/voxy.nix
 
   ];
   nix.settings = {
@@ -77,7 +78,7 @@ programs.zsh.enable = true;        # recommended
   users.users.sam = {
     isNormalUser = true;
     description = "sam";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "input" ];
     packages = with pkgs; [ ];
     shell = pkgs.zsh;
   };
@@ -106,6 +107,7 @@ programs.zsh.enable = true;        # recommended
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   services.openssh.settings.PasswordAuthentication = true;
+  services.voxy.enable = true;
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 22 ];
   networking.firewall.allowedUDPPorts = [ ];

@@ -32,6 +32,7 @@
       ga = "git add";
       gc = "git commit -m";
       gp = "git push";
+      pi = "pnpx @mariozechner/pi-coding-agent@latest";
     };
 
     profileExtra = ''
@@ -39,7 +40,7 @@
     . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
   fi
     '';
-    initExtra = ''
+    initContent = ''
       # vi keybindings
       bindkey -v
 
