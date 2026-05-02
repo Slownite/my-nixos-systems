@@ -292,11 +292,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1777668001,
-        "narHash": "sha256-d9NNfhVSTD2J7aSW/0JuK6ntC8MnaPgnfBiAS1GIh6M=",
+        "lastModified": 1777750632,
+        "narHash": "sha256-8FK6AWo3SfitFbGSMDFsGRuZFkxb2wGtmdCAsb/GxQw=",
         "owner": "Slownite",
         "repo": "my_ralph_loop",
-        "rev": "7b769cc68ad2b46a83128b3ea37cad34edd41f55",
+        "rev": "20f14470357c98ec873ad6375e78f3cf0fe0bfcd",
         "type": "github"
       },
       "original": {
