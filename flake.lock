@@ -292,11 +292,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1777765035,
-        "narHash": "sha256-rmnWAY5E7QKWpqL5VCNUOuBS02yZaUx91xq5TdbkvQw=",
+        "lastModified": 1777827556,
+        "narHash": "sha256-o0YUxxGx+fiGJ+jBcwQEIer6qFWJkEZpjmL4sJJZRtc=",
         "owner": "Slownite",
         "repo": "my_ralph_loop",
-        "rev": "7ee2cf6690bac898e9b6b2c864d1a369ba8a944c",
+        "rev": "56e573df78ed7fce50de9046d4b30bb13fe08f65",
         "type": "github"
       },
       "original": {
@@ -499,11 +499,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1777771833,
-        "narHash": "sha256-dPlLt7mIkwqZXZutYeqPcHN+Q+HkpAeUBq5lxzvggm8=",
+        "lastModified": 1777822101,
+        "narHash": "sha256-rKv2TQTQ+MsGQBOQEWCcYBa2OhNnk5XVORK7wg+jYIs=",
         "owner": "Slownite",
         "repo": "voxy-linux",
-        "rev": "c1e948baa9f1554dcb7e5362808fc2f473087276",
+        "rev": "711983c0b1931f8f289e77c8e2654efb9dd941d1",
         "type": "github"
       },
       "original": {
