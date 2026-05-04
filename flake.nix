@@ -23,7 +23,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     voxy = {
-      url = "github:Slownite/voxy-linux";
+      url = "github:samanddima/voxy-linux";
     };
     ralf = {
     url = "github:Slownite/my_ralph_loop";

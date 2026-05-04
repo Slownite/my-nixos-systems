@@ -29,9 +29,7 @@
       t = "tmux";
       ta = "tmux a";
       copy = "xclip -selection clipboard";
-      ga = "git add";
-      gc = "git commit -m";
-      gp = "git push";
+      gc = "claude \"git commit and git push\"";
       pi = "pnpx @mariozechner/pi-coding-agent@latest";
     };
 
