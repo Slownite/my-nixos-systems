@@ -3,7 +3,7 @@
 {
   services.voxy = {
     enable = true;
-    modelSize = "tiny";
+    modelSize = "small";
   };
   users.users.sam.extraGroups = [ "input" ];
 }
