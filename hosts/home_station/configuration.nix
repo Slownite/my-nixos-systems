@@ -19,6 +19,7 @@
     ../../system/services/ollama.nix
     ../../system/hardware/networking.nix
     ../../system/services/voxy.nix
+    ../../system/services/teamviewer.nix
 
   ];
   nix.settings = {

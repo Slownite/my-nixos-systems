@@ -1,4 +1,5 @@
-{ config, lib, pkgs, pkgs-unstable, ... }:
+{ config, lib, pkgs, unstablePkgs,... }:
+  
 
 {
 
@@ -60,7 +61,7 @@
       gc = "git commit -m";
       gp = "git push";
     };
-    package = pkgs-unstable.nushell;
+    package = unstablePkgs.nushell;
   };
 
   # Enable and configure Pueue service

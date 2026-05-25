@@ -14,8 +14,10 @@
     ./tmux.nix
     ./starship.nix
     ./fish.nix
+    ./xonsh.nix
     ./fastfetch.nix
     ./claude_code.nix
+    ./nushell.nix
   ];
   home.packages = with pkgs; [
     bat
@@ -33,6 +35,7 @@
     nixos-generators
     just
     opencode
+    codex
     nodejs
     tree
     unstablePkgs.gemini-cli
