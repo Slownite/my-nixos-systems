@@ -3,6 +3,7 @@
 {
   programs.tmux = {
     enable = true;
+    shell = "${pkgs.xonsh}/bin/xonsh";
     keyMode = "vi";
     prefix = "C-s";
     newSession = true;
