@@ -13,5 +13,9 @@
       tmuxPlugins.nord
       tmuxPlugins.tmux-fzf
     ];
+    extraConfig = ''
+      # default-shell alone keeps spawning the login shell (zsh); force xonsh
+      set -g default-command "${pkgs.xonsh}/bin/xonsh"
+    '';
   };
 }
