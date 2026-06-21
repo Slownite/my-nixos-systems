@@ -10,6 +10,21 @@
       confirm-kill-processes nil
       sentence-end-double-space nil)
 
+;; Auto-reload buffers when files change on disk (e.g. opencode edits)
+(use-package emacs
+  :init
+  ;; Automatically refresh buffers when their files change on disk
+  (global-auto-revert-mode 1)
+  :custom
+  (global-auto-revert-non-file-buffers t) ; also revert dired, etc.
+  (auto-revert-verbose nil)               ; don't spam the echo area
+  (auto-revert-use-notify t)              ; use filesystem notifications
+  (auto-revert-avoid-polling t)           ; only poll when notify is unavailable
+  (revert-without-query '(".*")))         ; never prompt before reverting
+;; NOTE: backups stay enabled but are redirected to ~/.emacs.d/backup/ and
+;; lockfiles are disabled (create-lockfiles nil) in the section below, so
+;; opencode's writes won't collide with project-local clutter.
+
 ;; Backups / autosaves (no-littering will redirect most of this)
 (setq make-backup-files t
       backup-by-copying t

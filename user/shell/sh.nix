@@ -18,6 +18,7 @@
     ./fastfetch.nix
     ./claude_code.nix
     ./nushell.nix
+    ./opencode.nix
   ];
   home.packages = with pkgs; [
     bat
@@ -34,7 +35,6 @@
     sox
     nixos-generators
     just
-    opencode
     codex
     nodejs
     tree

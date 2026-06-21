@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixos-25.11";
+      url = "github:NixOS/nixpkgs/nixos-26.05";
     };
     unstable-nixpkgs = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -14,12 +14,12 @@
     };
 
     stylix = {
-      url = "github:nix-community/stylix?ref=release-25.11";
+      url = "github:nix-community/stylix?ref=release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager?ref=release-25.11";
+      url = "github:nix-community/home-manager?ref=release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     voxy = {
