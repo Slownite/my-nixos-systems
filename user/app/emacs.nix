@@ -59,6 +59,7 @@
         helpful
         avy
 	just-mode
+        gptel
       ]
   );
 

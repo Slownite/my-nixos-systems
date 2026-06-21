@@ -38,6 +38,9 @@
 ;; LSP (centralized)
 (require 'core-lsp)
 
+;; LLM chat
+(require 'core-gptel)
+
 ;; Leader keys last (it binds stuff from other modules)
 (require 'core-leader)
 

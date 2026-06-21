@@ -116,6 +116,17 @@
     "tv" '(multi-vterm :which-key "vterm"))
 
   ;; =====================
+  ;; AI / LLM (gptel)
+  ;; =====================
+  (my/leader
+    "a"  '(:ignore t :which-key "ai")
+    "aa" '(gptel :which-key "open chat")
+    "as" '(gptel-send :which-key "send")
+    "am" '(gptel-menu :which-key "menu")
+    "aM" '(my/gptel-set-model :which-key "choose model")
+    "ar" '(gptel-rewrite :which-key "rewrite"))
+
+  ;; =====================
   ;; Org
   ;; =====================
   (my/leader
