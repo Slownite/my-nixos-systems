@@ -123,7 +123,8 @@
     "aa" '(gptel :which-key "open chat")
     "as" '(gptel-send :which-key "send")
     "am" '(gptel-menu :which-key "menu")
-    "aM" '(my/gptel-set-model :which-key "choose model")
+    "aM" '(my/gptel-set-model :which-key "choose HF model")
+    "ao" '(my/gptel-use-ollama :which-key "use local ollama")
     "ar" '(gptel-rewrite :which-key "rewrite"))
 
   ;; =====================

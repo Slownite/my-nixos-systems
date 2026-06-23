@@ -18,7 +18,34 @@
                         :models '(deepseek-ai/DeepSeek-V3-0324
                                   meta-llama/Llama-3.3-70B-Instruct
                                   Qwen/Qwen2.5-72B-Instruct
-                                  Qwen/Qwen3-235B-A22B))))
+                                  Qwen/Qwen3-235B-A22B)))
+
+  ;; Local ollama (system service on localhost:11434). Registered as a
+  ;; second backend; switch to it in `gptel-menu' (the "-m"/backend field)
+  ;; or with `my/gptel-use-ollama' below. No API key needed.
+  (gptel-make-ollama "Ollama"
+    :host "localhost:11434"
+    :stream t
+    :models '(qwen3-coder-32k:latest
+              qwen3-coder-100k:latest
+              qwen3-coder:30b
+              qwen3-8b-100k:latest
+              qwen3:8b-32k
+              qwen3:8b
+              gemma3:12b)))
+
+(defun my/gptel-use-ollama ()
+  "Switch gptel to the local Ollama backend and pick one of its models."
+  (interactive)
+  (require 'gptel)
+  (let* ((backend (cdr (assoc "Ollama" gptel--known-backends)))
+         (choice (intern (completing-read
+                          "Ollama model: "
+                          (mapcar #'symbol-name (gptel-backend-models backend))
+                          nil t))))
+    (setq gptel-backend backend
+          gptel-model choice)
+    (message "gptel: Ollama / %s" choice)))
 
 ;; ---- Pick any model the HuggingFace router currently serves ----
 
@@ -47,6 +74,7 @@
 (defun my/gptel-set-model ()
   "Choose any model the HuggingFace router serves and set it for gptel."
   (interactive)
+  (require 'gptel)
   (let ((choice (intern (completing-read "HF model: " (my/gptel-hf-models) nil t))))
     (setq gptel-model choice)
     ;; Register it on the backend so the gptel menu also offers it.
