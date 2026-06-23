@@ -81,6 +81,9 @@
     zls
     #haskell
     haskell-language-server
+    # rust
+    rust-analyzer
+    rustfmt
         (tree-sitter.withPlugins (p: [
       p.tree-sitter-c
       p.tree-sitter-cpp
@@ -93,6 +96,7 @@
       p.tree-sitter-html
       p.tree-sitter-nix
       p.tree-sitter-zig
+      p.tree-sitter-rust
       p.tree-sitter-bash
       p.tree-sitter-yaml
       p.tree-sitter-haskell

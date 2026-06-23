@@ -10,6 +10,7 @@
          (c-mode              . eglot-ensure)
          (c++-mode            . eglot-ensure)
          (zig-mode            . eglot-ensure)
+         (rust-ts-mode        . eglot-ensure)
 	 (just-mode           . eglot-ensure))
   :config
   ;; Prefer explicit server commands (Nix provides binaries)
@@ -34,6 +35,9 @@
 
   (add-to-list 'eglot-server-programs
                '(zig-mode . ("zls")))
+
+  (add-to-list 'eglot-server-programs
+               '(rust-ts-mode . ("rust-analyzer")))
 
   ;; save hook
   (defun joy/nix-format-buffer ()

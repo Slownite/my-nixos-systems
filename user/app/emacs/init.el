@@ -34,6 +34,7 @@
 (require 'core-js)
 (require 'core-vue)
 (require 'core-python)
+(require 'core-rust)
 
 ;; LSP (centralized)
 (require 'core-lsp)
