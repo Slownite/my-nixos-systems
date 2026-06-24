@@ -4,3 +4,7 @@
 tmp/
 result
 **/*~
+
+# Emacs no-littering runtime state
+user/app/emacs/var/
+user/app/emacs/etc/
