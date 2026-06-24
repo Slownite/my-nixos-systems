@@ -33,6 +33,11 @@
   boot.supportedFilesystems = [ "nfs" ];
 #boot.kernelParams = [ "acpi=strict" "nosmt" ];
 #boot.blacklistedKernelModules = [ "kvm" "kvm-intel" "kvm-amd" ];
+  fileSystems."/mnt/disk2" = {
+    device = "/dev/disk/by-uuid/78fa6c7a-5827-4e27-a6dd-ef198d3a7f10";
+    fsType = "ext4";
+    options = [ "nofail" "x-systemd.device-timeout=10s" ];
+  };
   fileSystems."/home/sam/nas" = {
     device = "192.168.8.100:/mnt/external_data";
     fsType = "nfs";

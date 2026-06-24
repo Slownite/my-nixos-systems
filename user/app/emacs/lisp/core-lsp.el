@@ -39,13 +39,7 @@
   (add-to-list 'eglot-server-programs
                '(rust-ts-mode . ("rust-analyzer")))
 
-  ;; save hook
-  (defun joy/nix-format-buffer ()
-    (when (derived-mode-p 'nix-mode)
-      (let ((cmd "alejandra --quiet"))
-        (shell-command-on-region (point-min) (point-max) cmd t t))))
-
-  (add-hook 'before-save-hook #'joy/nix-format-buffer)
+  ;; Nix formatting on save lives in core-nix.el (joy/nix-format-buffer).
 
   ;; Format on save only if server supports it
   (defun joy/eglot-format-on-save ()
