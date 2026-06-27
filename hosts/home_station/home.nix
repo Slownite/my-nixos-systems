@@ -37,7 +37,7 @@
   home.packages = [
     pkgs.zig
     pkgs.uv
-    pkgs.javaPackages.compiler.openjdk17
+    pkgs.google-cloud-sdk
     pkgs.just
     pkgs.cargo
     pkgs.rustc
