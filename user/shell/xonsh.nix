@@ -20,6 +20,7 @@
     aliases['v'] = 'nvim'
     aliases['t'] = 'tmux'
     aliases['ta'] = 'tmux a'
+    aliases['h'] = 'herdr'
     aliases['copy'] = 'xclip -selection clipboard'
     aliases['gc'] = 'claude "git commit and git push"'
     aliases['pi'] = 'pnpx @mariozechner/pi-coding-agent@latest'
@@ -31,6 +32,13 @@
     $EDITOR = 'antigravity'
     $VISUAL = $EDITOR
     $PAGER = 'less'
+
+    # Disable terminal flow control so herdr's ctrl+s prefix works.
+    import subprocess as _sp
+    try:
+        _sp.run(['stty', '-ixon'])
+    except Exception:
+        pass
 
     import os.path
     if os.path.exists('/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'):
