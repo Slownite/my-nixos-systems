@@ -12,6 +12,7 @@
   imports = [
     ./zsh.nix
     ./tmux.nix
+    ./herdr.nix
     ./starship.nix
     ./fish.nix
     ./xonsh.nix

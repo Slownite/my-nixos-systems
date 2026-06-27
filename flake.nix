@@ -28,9 +28,12 @@
     ralf = {
     url = "github:Slownite/my_ralph_loop";
     };
+    herdr = {
+      url = "github:ogulcancelik/herdr";
+    };
   };
 
-  outputs = { self, nixpkgs, stylix, home-manager, base16-schemes, unstable-nixpkgs, voxy, ralf, ... }:
+  outputs = { self, nixpkgs, stylix, home-manager, base16-schemes, unstable-nixpkgs, voxy, ralf, herdr, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -65,9 +68,10 @@
       homeConfigurations = {
         sam = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = { inherit base16-schemes; 
+          extraSpecialArgs = { inherit base16-schemes;
           inherit unstablePkgs;
           ralfPkgs = ralf.packages.x86_64-linux;
+          herdrPkgs = herdr.packages.x86_64-linux;
           };
           modules = [
             stylix.homeModules.stylix
@@ -77,8 +81,9 @@
 
         mac = home-manager.lib.homeManagerConfiguration {
           pkgs = darwinPkgs;
-          extraSpecialArgs = { inherit base16-schemes; 
+          extraSpecialArgs = { inherit base16-schemes;
             ralfPkgs = ralf.packages.x86_64-darwin;
+            herdrPkgs = herdr.packages.x86_64-darwin;
           };
           modules = [
 
@@ -88,7 +93,9 @@
         };
 	wsl = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = { inherit base16-schemes; };
+          extraSpecialArgs = { inherit base16-schemes;
+            herdrPkgs = herdr.packages.x86_64-linux;
+          };
           modules = [
             stylix.homeModules.stylix
             ./hosts/wsl/home.nix
