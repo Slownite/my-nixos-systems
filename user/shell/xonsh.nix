@@ -22,7 +22,7 @@
     aliases['ta'] = 'tmux a'
     aliases['h'] = 'herdr'
     aliases['copy'] = 'xclip -selection clipboard'
-    aliases['gc'] = 'claude "git commit and git push"'
+    aliases['gc'] = 'opencode run "git commit and git push"'
     aliases['pi'] = 'pnpx @mariozechner/pi-coding-agent@latest'
 
     # vi keybindings
