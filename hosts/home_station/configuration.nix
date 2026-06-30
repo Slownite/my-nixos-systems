@@ -19,16 +19,20 @@
     ../../system/services/ollama.nix
     ../../system/hardware/networking.nix
     ../../system/services/voxy.nix
-    ../../system/services/teamviewer.nix
-
   ];
   nix.settings = {
-	experimental-features = [ "nix-command" "flakes" ];
-	trusted-users = [ "root" "sam" ];
+    experimental-features = [ "nix-command" "flakes" ];
+    trusted-users = [ "root" "sam" ];
+  };
 
-};
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 5;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "nfs" ];
 #boot.kernelParams = [ "acpi=strict" "nosmt" ];

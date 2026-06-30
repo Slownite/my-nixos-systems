@@ -1,14 +1,15 @@
-{ config, lib, pkgs, ... }:
-
 {
-  home.packages = [ pkgs.xonsh ];
-
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  home.packages = [pkgs.xonsh];
   xdg.configFile."xonsh/rc.xsh".text = ''
     # History
     $XONSH_HISTORY_BACKEND = 'sqlite'
     $XONSH_HISTORY_SIZE = (50000, 'commands')
     $HISTCONTROL = {'ignoredups', 'ignoreerr'}
-
     # Aliases (mirrors fish/zsh)
     aliases['ll'] = 'ls -l'
     aliases['la'] = 'ls -la'
@@ -24,33 +25,30 @@
     aliases['copy'] = 'xclip -selection clipboard'
     aliases['gc'] = 'opencode run "git commit and git push"'
     aliases['pi'] = 'pnpx @mariozechner/pi-coding-agent@latest'
-
     # vi keybindings
     $VI_MODE = True
-
     # Basics
     $EDITOR = 'antigravity'
     $VISUAL = $EDITOR
     $PAGER = 'less'
-
     # Disable terminal flow control so herdr's ctrl+s prefix works.
     import subprocess as _sp
     try:
         _sp.run(['stty', '-ixon'])
     except Exception:
         pass
-
     import os.path
     if os.path.exists('/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'):
         source-bash '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-
+    # ralf-loop tab completion (only when $RALF_ROOT is set)
+    import os as _os
+    if _os.environ.get('RALF_ROOT'):
+        source _os.path.join(_os.environ['RALF_ROOT'], 'completers', 'xonsh-completer.xsh')
     execx($(${pkgs.zoxide}/bin/zoxide init xonsh), 'exec', __xonsh__.ctx, filename='zoxide')
   '';
-
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
   };
-
   programs.zoxide.enable = true;
 }
