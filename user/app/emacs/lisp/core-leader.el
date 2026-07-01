@@ -128,6 +128,16 @@
     "ar" '(gptel-rewrite :which-key "rewrite"))
 
   ;; =====================
+  ;; Markdown
+  ;; =====================
+  (my/leader
+    "m"  '(:ignore t :which-key "markdown")
+    "mr" '(grip-mode :which-key "render (grip)")
+    "me" '(markdown-export :which-key "export")
+    "ml" '(markdown-live-preview-mode :which-key "live preview")
+    "mf" '(markdown-follow-link-at-point :which-key "follow link"))
+
+  ;; =====================
   ;; Org
   ;; =====================
   (my/leader

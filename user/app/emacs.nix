@@ -41,6 +41,8 @@
         treemacs-evil
         centaur-tabs
         magit
+        markdown-mode
+        grip-mode
         nix-ts-mode
         vue-mode
         zig-ts-mode
@@ -100,8 +102,11 @@
       p.tree-sitter-bash
       p.tree-sitter-yaml
       p.tree-sitter-haskell
+      p.tree-sitter-markdown
+      p.tree-sitter-markdown-inline
     ]))
     # other package
+    grip
     tree-sitter
     ripgrep
     fd

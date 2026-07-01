@@ -27,6 +27,7 @@
 (require 'core-nix)
 (require 'core-org)
 (require 'core-magit)
+(require 'core-markdown)
 ;;(require 'claude-vterm)
 (require 'personnal-command)
 (require 'core-tmux)
