@@ -6,9 +6,7 @@
   home-manager,
   ralfPkgs,
   ...
-}:
-
-{
+}: {
   imports = [
     ./zsh.nix
     ./tmux.nix
@@ -42,5 +40,6 @@
     unstablePkgs.gemini-cli
     unstablePkgs.pnpm
     ralfPkgs.default
+    openspec
   ];
 }

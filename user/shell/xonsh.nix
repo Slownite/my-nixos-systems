@@ -43,7 +43,7 @@
     # ralf-loop tab completion (only when $RALF_ROOT is set)
     import os as _os
     if _os.environ.get('RALF_ROOT'):
-        source _os.path.join(_os.environ['RALF_ROOT'], 'completers', 'xonsh-completer.xsh')
+        source @(_os.path.join(_os.environ['RALF_ROOT'], 'completers', 'xonsh-completer.xsh'))
     execx($(${pkgs.zoxide}/bin/zoxide init xonsh), 'exec', __xonsh__.ctx, filename='zoxide')
   '';
   programs.direnv = {
