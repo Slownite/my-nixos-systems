@@ -3,7 +3,6 @@
 let
   llama-cpp-cuda = pkgs.llama-cpp.override {
     cudaSupport = true;
-    autoAddDriverRunpath = true;
   };
 in {
   environment.systemPackages = with pkgs; [
