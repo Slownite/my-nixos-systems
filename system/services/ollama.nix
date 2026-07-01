@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, unstablePkgs, ... }:
 
 {
   services.ollama = {
@@ -7,7 +7,7 @@
     # ("skipping CUDA device — compute capability not in compiled architectures")
     # and every model falls back to 100% CPU. Recompile the CUDA runner for
     # sm_61 so the GPU is actually used. CUDA 12.x still supports Pascal.
-    package = pkgs.ollama-cuda.override {
+    package = unstablePkgs.ollama-cuda.override {
       cudaArches = [ "sm_61" ];
     };
     enable = true;

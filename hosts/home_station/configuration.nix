@@ -16,7 +16,7 @@
     ../../system/hardware/printer.nix
     ../../system/hardware/audio.nix
     ../../system/services/container.nix
-    ../../system/services/ollama.nix
+    ../../system/services/llama.nix
     ../../system/hardware/networking.nix
     ../../system/services/voxy.nix
   ];
@@ -93,7 +93,10 @@ programs.zsh.enable = true;        # recommended
     shell = pkgs.zsh;
   };
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    permittedInsecurePackages = [ "pnpm-10.29.2" ];
+  };
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [

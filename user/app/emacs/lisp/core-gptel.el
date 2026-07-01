@@ -20,32 +20,27 @@
                                   Qwen/Qwen2.5-72B-Instruct
                                   Qwen/Qwen3-235B-A22B)))
 
-  ;; Local ollama (system service on localhost:11434). Registered as a
+  ;; Local llama-swap (system service on localhost:11434). Registered as a
   ;; second backend; switch to it in `gptel-menu' (the "-m"/backend field)
-  ;; or with `my/gptel-use-ollama' below. No API key needed.
-  (gptel-make-ollama "Ollama"
+  ;; or with `my/gptel-use-local' below. No API key needed.
+  (gptel-make-openai "Local"
     :host "localhost:11434"
+    :endpoint "/v1/chat/completions"
     :stream t
-    :models '(qwen3-coder-32k:latest
-              qwen3-coder-100k:latest
-              qwen3-coder:30b
-              qwen3-8b-100k:latest
-              qwen3:8b-32k
-              qwen3:8b
-              gemma3:12b)))
+    :models '(ornith:9b)))
 
-(defun my/gptel-use-ollama ()
-  "Switch gptel to the local Ollama backend and pick one of its models."
+(defun my/gptel-use-local ()
+  "Switch gptel to the local llama-swap backend and pick one of its models."
   (interactive)
   (require 'gptel)
-  (let* ((backend (cdr (assoc "Ollama" gptel--known-backends)))
+  (let* ((backend (cdr (assoc "Local" gptel--known-backends)))
          (choice (intern (completing-read
-                          "Ollama model: "
+                          "Local model: "
                           (mapcar #'symbol-name (gptel-backend-models backend))
                           nil t))))
     (setq gptel-backend backend
           gptel-model choice)
-    (message "gptel: Ollama / %s" choice)))
+    (message "gptel: Local / %s" choice)))
 
 ;; ---- Pick any model the HuggingFace router currently serves ----
 

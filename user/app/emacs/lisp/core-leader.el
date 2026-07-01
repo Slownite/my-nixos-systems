@@ -124,7 +124,7 @@
     "as" '(gptel-send :which-key "send")
     "am" '(gptel-menu :which-key "menu")
     "aM" '(my/gptel-set-model :which-key "choose HF model")
-    "ao" '(my/gptel-use-ollama :which-key "use local ollama")
+    "ao" '(my/gptel-use-local :which-key "use local model")
     "ar" '(gptel-rewrite :which-key "rewrite"))
 
   ;; =====================

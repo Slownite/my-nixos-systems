@@ -54,7 +54,7 @@
       nixosConfigurations = {
         homeStation = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit system stylix base16-schemes;
+            inherit system stylix base16-schemes unstablePkgs;
           };
           modules = [
             voxy.nixosModules.voxy
